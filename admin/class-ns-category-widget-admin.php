@@ -118,8 +118,8 @@ class NS_Category_Widget_Admin {
 	public function add_plugin_admin_menu() {
 
 		$this->plugin_screen_hook_suffix = add_options_page(
-			__( NS_CATEGORY_WIDGET_NAME, $this->plugin_slug ),
-			__( NS_CATEGORY_WIDGET_NAME, $this->plugin_slug ),
+			__( 'NS Category Widget', 'ns-category-widget' ),
+			__( 'NS Category Widget', 'ns-category-widget' ),
 			'manage_options',
 			$this->plugin_slug,
 			array( $this, 'display_plugin_admin_page' )
@@ -145,7 +145,7 @@ class NS_Category_Widget_Admin {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', $this->plugin_slug ) . '</a>'
+				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', 'ns-category-widget' ) . '</a>'
 			),
 			$links
 		);
@@ -199,19 +199,19 @@ class NS_Category_Widget_Admin {
 	function nscw_field_enable_ns_category_widget_callback() {
 		?>
 		<input type="checkbox" name="nscw_plugin_options[nscw_field_enable_ns_category_widget]" value="1"
-		<?php checked(isset($this->options['nscw_field_enable_ns_category_widget']) && 1 == $this->options['nscw_field_enable_ns_category_widget']); ?> />&nbsp;<?php _e("Enable",  'simple-register' ); ?>
+		<?php checked(isset($this->options['nscw_field_enable_ns_category_widget']) && 1 == $this->options['nscw_field_enable_ns_category_widget']); ?> />&nbsp;<?php _e("Enable",  'ns-category-widget' ); ?>
 		<?php
 	}
 	function nscw_field_enable_tree_script_callback() {
 		?>
 		<input type="checkbox" name="nscw_plugin_options[nscw_field_enable_tree_script]" value="1"
-		<?php checked(isset($this->options['nscw_field_enable_tree_script']) && 1 == $this->options['nscw_field_enable_tree_script']); ?> />&nbsp;<?php _e("Enable",  'simple-register' ); ?>
+		<?php checked(isset($this->options['nscw_field_enable_tree_script']) && 1 == $this->options['nscw_field_enable_tree_script']); ?> />&nbsp;<?php _e("Enable",  'ns-category-widget' ); ?>
 		<?php
 	}
 	function nscw_field_enable_tree_style_callback() {
 		?>
 		<input type="checkbox" name="nscw_plugin_options[nscw_field_enable_tree_style]" value="1"
-		<?php checked(isset($this->options['nscw_field_enable_tree_style']) && 1 == $this->options['nscw_field_enable_tree_style']); ?> />&nbsp;<?php _e("Enable",  'simple-register' ); ?>
+		<?php checked(isset($this->options['nscw_field_enable_tree_style']) && 1 == $this->options['nscw_field_enable_tree_style']); ?> />&nbsp;<?php _e("Enable",  'ns-category-widget' ); ?>
 		<?php
 	}
 

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ramro
 Tags: category, listing, widget, list, post, posts, sidebar, taxonomy, custom taxonomy, parent category
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 2.0.2
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
