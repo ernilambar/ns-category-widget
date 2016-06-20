@@ -81,6 +81,14 @@ module.exports = function( grunt ) {
 					from: /\*\s*Version:\s*(.*)/,
 					to: '* Version: <%= pkg.version %>'
 				}]
+			},
+			'admin_file': {
+				src: [ 'public/class-ns-category-widget.php' ],
+				overwrite: true,
+				replacements: [{
+					from: /\sVERSION\s=\s*(.*)/,
+					to: ' VERSION = \'<%= pkg.version %>\';'
+				}]
 			}
 		},
 
@@ -216,7 +224,8 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'version', [
 		'replace:readme_txt',
-		'replace:plugin_file'
+		'replace:plugin_file',
+		'replace:admin_file'
 	] );
 
 	grunt.registerTask( 'prerelease', [

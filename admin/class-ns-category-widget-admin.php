@@ -1,17 +1,14 @@
 <?php
 /**
- * NS Category Widget.
+ * NS Category Widget Admin.
  *
- * @package   NS_Category_Widget_Admin
- * @author    Nilambar Sharma <nilambar@outlook.com>
- * @license   GPL-2.0+
- * @link      http://www.nilambar.net
- * @copyright 2014 Nilambar Sharma
+ * @package NS_Category_Widget
  */
 
 /**
- * @package NS_Category_Widget_Admin
- * @author  Nilambar Sharma <nilambar@outlook.com>
+ * NS Category Widget Admin Class.
+ *
+ * @since 1.0.0
  */
 class NS_Category_Widget_Admin {
 
@@ -145,7 +142,7 @@ class NS_Category_Widget_Admin {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', 'ns-category-widget' ) . '</a>'
+				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . __( 'Settings', 'ns-category-widget' ) . '</a>'
 			),
 			$links
 		);
@@ -153,7 +150,7 @@ class NS_Category_Widget_Admin {
 	}
 
   /**
-   * Register plugin settings
+   * Register plugin settings.
    */
   public function plugin_register_settings()
   {

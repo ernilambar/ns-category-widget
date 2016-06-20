@@ -2,16 +2,13 @@
 /**
  * NS Category Widget.
  *
- * @package   NS_Category_Widget
- * @author    Nilambar Sharma <nilambar@outlook.com>
- * @license   GPL-2.0+
- * @link      http://www.nilambar.net
- * @copyright 2014 Nilambar Sharma
+ * @package NS_Category_Widget
  */
 
 /**
- * @package NS_Category_Widget
- * @author  Nilambar Sharma <nilambar@outlook.com>
+ * NS Category Widget Class.
+ *
+ * @since 1.0.0
  */
 class NS_Category_Widget {
 
@@ -22,7 +19,7 @@ class NS_Category_Widget {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '2.0.2';
+	const VERSION = '3.0.0';
 
 	/**
 	 * Unique identifier for your plugin.
