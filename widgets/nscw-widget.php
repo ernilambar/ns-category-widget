@@ -1,14 +1,16 @@
 <?php
+
 class NSCW_Widget extends WP_Widget {
 
-  function __construct() {
+	function __construct() {
 
-    $widget_ops = array(
-      'classname'     =>  'widget_ns_category_widget',
-      'description'   =>  __( "Widget for displaying categories in your way",'ns-category-widget') );
+		$widget_ops = array(
+			'classname'   =>  'widget_ns_category_widget',
+			'description' =>  __( "Widget for displaying categories in your way",'ns-category-widget'),
+			);
 
-    parent::__construct('ns-category-widget', NS_CATEGORY_WIDGET_NAME, $widget_ops );
-  }
+		parent::__construct( 'ns-category-widget', __( 'NS Category Widget', 'ns-category-widget' ), $widget_ops );
+	}
 
   function widget( $args, $instance ) {
 

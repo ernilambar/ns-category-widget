@@ -5,7 +5,7 @@
  * Description: A widget plugin for listing categories and taxonomies in the way you want.
  * Version: 3.0.0
  * Author: Nilambar Sharma
- * Author URI: http://www.nilambar.net
+ * Author URI: http://nilambar.net
  * Text Domain: ns-category-widget
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -18,8 +18,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'NS_CATEGORY_WIDGET_NAME', 'NS Category Widget' );
-define( 'NS_CATEGORY_WIDGET_SLUG', 'ns-category-widget' );
 define( 'NS_CATEGORY_WIDGET_BASENAME', basename( dirname( __FILE__ ) ) );
 define( 'NS_CATEGORY_WIDGET_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'NS_CATEGORY_WIDGET_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );

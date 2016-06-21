@@ -28,7 +28,7 @@ class NS_Category_Widget {
 	 *
 	 * @var string
 	 */
-	protected $plugin_slug = NS_CATEGORY_WIDGET_SLUG;
+	protected $plugin_slug = 'ns-category-widget';
 
 	/**
 	 * Unique option name of the plugin.
