@@ -9,59 +9,61 @@
 
 <div class="wrap">
 
-  <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-  <div id="poststuff">
+	<div id="poststuff">
 
-    <div id="post-body" class="metabox-holder columns-2">
+		<div id="post-body" class="metabox-holder columns-2">
 
-      <!-- main content -->
-      <div id="post-body-content">
+			<!-- main content -->
+			<div id="post-body-content">
 
-      <form action="options.php" method="post">
-        <?php settings_fields( 'nscw-plugin-options-group' ); ?>
+				<form action="options.php" method="post">
+					<?php settings_fields( 'nscw-plugin-options-group' ); ?>
 
-          <div class="meta-box-sortables ui-sortable">
+					<div class="meta-box-sortables ui-sortable">
 
-            <div class="postbox">
+						<div class="postbox">
 
-              <div class="inside">
-				<?php do_settings_sections( 'nscw-general' ); ?>
-             </div> <!-- .inside -->
+							<div class="inside">
 
-            </div> <!-- .postbox -->
+								<?php do_settings_sections( 'nscw-general' ); ?>
 
-          </div> <!-- .meta-box-sortables .ui-sortable -->
+							</div> <!-- .inside -->
 
-          <div class="meta-box-sortables ui-sortable">
+						</div> <!-- .postbox -->
 
-            <div class="postbox">
+					</div> <!-- .meta-box-sortables .ui-sortable -->
 
-             <div class="inside">
-				<?php do_settings_sections( 'nscw-tree' ); ?>
-             </div> <!-- .inside -->
+					<div class="meta-box-sortables ui-sortable">
 
-            </div> <!-- .postbox -->
+						<div class="postbox">
 
+							<div class="inside">
 
+								<?php do_settings_sections( 'nscw-tree' ); ?>
 
-          </div> <!-- .meta-box-sortables .ui-sortable -->
+							</div> <!-- .inside -->
 
-			<?php submit_button( __( 'Save Changes', 'ns-category-widget' ) ); ?>
-          </form>
+						</div> <!-- .postbox -->
 
-      </div> <!-- post-body-content -->
+					</div> <!-- .meta-box-sortables .ui-sortable -->
 
-      <!-- sidebar -->
-      <div id="postbox-container-1" class="postbox-container">
+					<?php submit_button( __( 'Save Changes', 'ns-category-widget' ) ); ?>
+				</form>
 
-        <?php require_once NS_CATEGORY_WIDGET_DIR . '/admin/views/admin-right.php'; ?>
+			</div> <!-- post-body-content -->
 
-      </div> <!-- #postbox-container-1 .postbox-container -->
+			<!-- sidebar -->
+			<div id="postbox-container-1" class="postbox-container">
 
-    </div> <!-- #post-body .metabox-holder .columns-2 -->
+				<?php require_once NS_CATEGORY_WIDGET_DIR . '/admin/views/admin-right.php'; ?>
 
-    <br class="clear">
-  </div> <!-- #poststuff -->
+			</div> <!-- #postbox-container-1 .postbox-container -->
+
+		</div> <!-- #post-body .metabox-holder .columns-2 -->
+
+		<br class="clear">
+	</div> <!-- #poststuff -->
 
 </div> <!-- .wrap -->

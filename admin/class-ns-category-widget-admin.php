@@ -15,27 +15,27 @@ class NS_Category_Widget_Admin {
 	/**
 	 * Instance of this class.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 *
-	 * @var      object
+	 * @var object
 	 */
 	protected static $instance = null;
 
 	/**
 	 * Slug of the plugin screen.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 *
-	 * @var      string
+	 * @var string
 	 */
 	protected $plugin_screen_hook_suffix = null;
 
 	/**
 	 * Plugin options.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 *
-	 * @var      array
+	 * @var array
 	 */
 	protected $options = array();
 
@@ -43,7 +43,7 @@ class NS_Category_Widget_Admin {
 	 * Initialize the plugin by loading admin scripts & styles and adding a
 	 * settings page and menu.
 	 *
-	 * @since     1.0.0
+	 * @since 1.0.0
 	 */
 	private function __construct() {
 
@@ -59,18 +59,13 @@ class NS_Category_Widget_Admin {
 		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
-		/*
-		 * Define custom functionality.
-		 */
-		add_action('admin_init', array($this, 'plugin_register_settings'));
+		// Define custom functionality.
+		add_action( 'admin_init', array( $this, 'plugin_register_settings' ) );
 
 		if ( $this->options['nscw_field_enable_ns_category_widget'] ) {
-
 			add_action( 'admin_enqueue_scripts', array( $this, 'nscw_scripts_enqueue' ) );
-
 			add_action( 'wp_ajax_populate_categories', array( $this, 'ns_category_widget_ajax_populate_categories' ) );
 			add_action( 'wp_ajax_nopriv_populate_categories', array( $this, 'ns_category_widget_ajax_populate_categories' ) );
-
 		}
 
 	}
@@ -78,9 +73,9 @@ class NS_Category_Widget_Admin {
 	/**
 	 * Return an instance of this class.
 	 *
-	 * @since     1.0.0
+	 * @since 1.0.0
 	 *
-	 * @return    object    A single instance of this class.
+	 * @return object A single instance of this class.
 	 */
 	public static function get_instance() {
 
@@ -94,23 +89,22 @@ class NS_Category_Widget_Admin {
 	/**
 	 * Enqueue widget scripts.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
-	function nscw_scripts_enqueue( $hook ){
-		if( $hook != 'widgets.php' ){
+	function nscw_scripts_enqueue( $hook ) {
+		if ( 'widgets.php' !== $hook ) {
 		    return;
 		}
 		wp_register_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js' );
 		wp_localize_script( 'nscw-widget-script', 'ns_category_widget_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-		wp_enqueue_script('nscw-widget-script');
+		wp_enqueue_script( 'nscw-widget-script' );
 
 	}
 
-
 	/**
-	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
+	 * Register administration menu for the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function add_plugin_admin_menu() {
 
@@ -127,68 +121,69 @@ class NS_Category_Widget_Admin {
 	/**
 	 * Render the settings page for this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function display_plugin_admin_page() {
+
 		include_once( 'views/admin.php' );
+
 	}
 
 	/**
 	 * Add settings action link to the plugins page.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function add_action_links( $links ) {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . __( 'Settings', 'ns-category-widget' ) . '</a>'
+				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . __( 'Settings', 'ns-category-widget' ) . '</a>',
 			),
 			$links
 		);
 
 	}
 
-  /**
-   * Register plugin settings.
-   */
-  public function plugin_register_settings()
-  {
+	/**
+	 * Register plugin settings.
+	 *
+	 * @since 1.0.0
+	 */
+	public function plugin_register_settings() {
 
-    register_setting('nscw-plugin-options-group', 'nscw_plugin_options', array( $this, 'plugin_options_validate') );
+		register_setting( 'nscw-plugin-options-group', 'nscw_plugin_options', array( $this, 'plugin_options_validate' ) );
 
-    ////
+		add_settings_section( 'general_settings', __( 'General Settings', 'ns-category-widget' ) , array( $this, 'plugin_section_general_text_callback' ), 'nscw-general' );
 
-		add_settings_section('general_settings', __( 'General Settings', 'ns-category-widget' ) , array($this, 'plugin_section_general_text_callback'), 'nscw-general');
+		add_settings_field( 'nscw_field_enable_ns_category_widget', __( 'Enable NS Category Widget', 'ns-category-widget' ), array( $this, 'nscw_field_enable_ns_category_widget_callback' ), 'nscw-general', 'general_settings' );
 
-		add_settings_field('nscw_field_enable_ns_category_widget', __( 'Enable NS Category Widget', 'ns-category-widget' ), array($this, 'nscw_field_enable_ns_category_widget_callback'), 'nscw-general', 'general_settings');
+		add_settings_section( 'tree_settings', __( 'Tree Settings', 'ns-category-widget' ) , array( $this, 'plugin_section_tree_text_callback' ), 'nscw-tree' );
 
-    ////
-		add_settings_section('tree_settings', __( 'Tree Settings', 'ns-category-widget' ) , array($this, 'plugin_section_tree_text_callback'), 'nscw-tree');
+		add_settings_field( 'nscw_field_enable_tree_script', __( 'Enable Tree Script', 'ns-category-widget' ), array( $this, 'nscw_field_enable_tree_script_callback' ), 'nscw-tree', 'tree_settings' );
+		add_settings_field( 'nscw_field_enable_tree_style', __( 'Enable Tree Style', 'ns-category-widget' ), array( $this, 'nscw_field_enable_tree_style_callback' ), 'nscw-tree', 'tree_settings' );
 
-		add_settings_field('nscw_field_enable_tree_script', __( 'Enable Tree Script', 'ns-category-widget' ), array($this, 'nscw_field_enable_tree_script_callback'), 'nscw-tree', 'tree_settings');
-		add_settings_field('nscw_field_enable_tree_style', __( 'Enable Tree Style', 'ns-category-widget' ), array($this, 'nscw_field_enable_tree_style_callback'), 'nscw-tree', 'tree_settings');
+	}
 
-    ////
-
-
-  }
 	/**
 	 * Validate our options.
+	 *
+	 * @since 1.0.0
 	 */
-  function plugin_options_validate($input) {
+	function plugin_options_validate( $input ) {
 
 		$input['nscw_field_enable_ns_category_widget'] = ( isset( $input['nscw_field_enable_ns_category_widget'] ) ) ? 1 : 0 ;
 
 		$input['nscw_field_enable_tree_script']        = ( isset( $input['nscw_field_enable_tree_script'] ) ) ? 1 : 0 ;
 		$input['nscw_field_enable_tree_style']         = ( isset( $input['nscw_field_enable_tree_style'] ) ) ? 1 : 0 ;
 
-  	return $input;
-  }
+		return $input;
+	}
 
 	function plugin_section_general_text_callback() {
 		return;
 	}
+
 	function plugin_section_tree_text_callback() {
 		return;
 	}
@@ -196,49 +191,51 @@ class NS_Category_Widget_Admin {
 	function nscw_field_enable_ns_category_widget_callback() {
 		?>
 		<input type="checkbox" name="nscw_plugin_options[nscw_field_enable_ns_category_widget]" value="1"
-		<?php checked(isset($this->options['nscw_field_enable_ns_category_widget']) && 1 == $this->options['nscw_field_enable_ns_category_widget']); ?> />&nbsp;<?php _e("Enable",  'ns-category-widget' ); ?>
+		<?php checked( isset( $this->options['nscw_field_enable_ns_category_widget'] ) && 1 == $this->options['nscw_field_enable_ns_category_widget'] ); ?> />&nbsp;<?php _e( 'Enable',  'ns-category-widget' ); ?>
 		<?php
 	}
+
 	function nscw_field_enable_tree_script_callback() {
 		?>
 		<input type="checkbox" name="nscw_plugin_options[nscw_field_enable_tree_script]" value="1"
-		<?php checked(isset($this->options['nscw_field_enable_tree_script']) && 1 == $this->options['nscw_field_enable_tree_script']); ?> />&nbsp;<?php _e("Enable",  'ns-category-widget' ); ?>
+		<?php checked( isset( $this->options['nscw_field_enable_tree_script'] ) && 1 == $this->options['nscw_field_enable_tree_script'] ); ?> />&nbsp;<?php _e( 'Enable',  'ns-category-widget' ); ?>
 		<?php
 	}
+
 	function nscw_field_enable_tree_style_callback() {
 		?>
 		<input type="checkbox" name="nscw_plugin_options[nscw_field_enable_tree_style]" value="1"
-		<?php checked(isset($this->options['nscw_field_enable_tree_style']) && 1 == $this->options['nscw_field_enable_tree_style']); ?> />&nbsp;<?php _e("Enable",  'ns-category-widget' ); ?>
+		<?php checked( isset( $this->options['nscw_field_enable_tree_style'] ) && 1 == $this->options['nscw_field_enable_tree_style'] ); ?> />&nbsp;<?php _e( 'Enable',  'ns-category-widget' ); ?>
 		<?php
 	}
 
-
 	/**
-	 * Ajax function to populate categories in widget settings
+	 * Ajax function to populate categories in widget settings.
+	 *
+	 * @since 1.0.0
 	 */
-	function ns_category_widget_ajax_populate_categories(){
+	function ns_category_widget_ajax_populate_categories() {
 
 		$output           = array();
 		$output['status'] = 0;
 
-		$taxonomy         = $_POST['taxonomy'];
-		$name             = $_POST['name'];
-		$id               = $_POST['id'];
+		$taxonomy = $_POST['taxonomy'];
+		$name     = $_POST['name'];
+		$id       = $_POST['id'];
 
-	  $cat_args = array(
-			'orderby'         =>  'slug',
-			'taxonomy'        =>  $taxonomy,
-			'echo'            =>  '0',
-			'hide_empty'      =>  0,
-			'name'            =>  $name,
-			'id'              =>  $id,
-			'class'           =>  'nscw-cat-list',
-			'show_option_all' =>  __('Show All','ns-category-widget'),
+		$cat_args = array(
+			'orderby'         => 'slug',
+			'taxonomy'        => $taxonomy,
+			'echo'            => '0',
+			'hide_empty'      => 0,
+			'name'            => $name,
+			'id'              => $id,
+			'class'           => 'nscw-cat-list',
+			'show_option_all' => __( 'Show All','ns-category-widget' ),
 	    );
-		$output['html']   = wp_dropdown_categories(apply_filters('widget_categories_dropdown_args', $cat_args));
+		$output['html']   = wp_dropdown_categories( apply_filters( 'widget_categories_dropdown_args', $cat_args ) );
 		$output['status'] = 1;
 
-	  wp_send_json($output);
+		wp_send_json( $output );
 	}
-
 }
