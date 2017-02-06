@@ -2,8 +2,8 @@
 Contributors: rabmalin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ramrojob1%40gmail%2ecom&lc=US&item_name=Nilambar%20Sharma&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: category, listing, widget, list, post, posts, sidebar, taxonomy, custom taxonomy, parent category
-Requires at least: 3.8
-Tested up to: 4.1
+Requires at least: 4.5
+Tested up to: 4.7
 Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -54,6 +54,11 @@ Nice, make a post on the [Support Forum](http://wordpress.org/support/plugin/ns-
 1. Adding widget in sidebar
 
 == Changelog ==
+
+= 3.0.0 =
+* Compatibility with WP 4.7
+* Code cleanup
+* Few bug fixes
 
 = 2.0.2 =
 * Minor bug fixes
