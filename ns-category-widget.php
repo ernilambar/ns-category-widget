@@ -3,7 +3,7 @@
  * Plugin Name: NS Category Widget
  * Plugin URI: http://wordpress.org/plugins/ns-category-widget/
  * Description: A widget plugin for listing categories and taxonomies in the way you want.
- * Version: 3.0.0
+ * Version: 3.1.0
  * Author: Nilambar Sharma
  * Author URI: http://nilambar.net
  * Text Domain: ns-category-widget
