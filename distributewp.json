@@ -1,0 +1,6 @@
+{
+  "plugin_slug": "ns-category-widget",
+  "deployment_folder": "deploy/ns-category-widget",
+  "deploy_assets": true,
+  "assets_folder": "plugin-assets"
+}
