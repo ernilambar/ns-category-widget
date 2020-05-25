@@ -53,3 +53,27 @@ function nscw_register_plugin_widgets() {
 }
 
 add_action( 'widgets_init', 'nscw_register_plugin_widgets' );
+
+function nscw_hierarchical_category_tree( $cat_id, $args, $is_tree ) {
+	$args['parent'] = absint( $cat_id );
+
+	$next = get_terms( $args );
+
+	if ( $next ) {
+		foreach( $next as $cat ) {
+			echo '<ul><li><a href="' . esc_url( get_term_link( $cat->term_id ) ) . '">' . esc_html( $cat->name ) ;
+			if ( 1 === absint( $is_tree ) && 1 === absint( $args['show_count'] ) ) {
+				echo ' <span>(' . absint( $cat->count ) . ')</span>';
+			}
+			echo '</a>';
+
+			if ( 1 !== absint( $is_tree ) && 1 === absint( $args['show_count'] ) ) {
+				echo ' <span>(' . absint( $cat->count ) . ')</span>';
+			}
+
+			nscw_hierarchical_category_tree( $cat->term_id, $args, $is_tree );
+		}
+	}
+
+	echo '</li></ul>';
+}

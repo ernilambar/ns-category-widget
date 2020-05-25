@@ -68,9 +68,7 @@ class NSCW_Widget extends WP_Widget {
 		}
 
 		echo '<div class="' . $class_text . '">';
-		echo '<ul class="cat-list">';
-		wp_list_categories( apply_filters( 'widget_categories_args', $cat_args ) );
-		echo '</ul>';
+		nscw_hierarchical_category_tree( 0, apply_filters( 'widget_categories_args', $cat_args ), $enable_tree );
 		echo '</div>';
 
 		$obj_nscw = NS_Category_Widget::get_instance();
