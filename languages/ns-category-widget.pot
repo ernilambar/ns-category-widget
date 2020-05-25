@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: NS Category Widget 3.1.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ns-category-widget\n"
-"POT-Creation-Date: 2020-05-25 10:22:41+00:00\n"
+"POT-Creation-Date: 2020-05-25 16:00:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,43 +14,43 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: node-wp-i18n 1.2.3\n"
 
-#: widgets/nscw-widget.php:227
+#: widgets/nscw-widget.php:233
 msgid "1"
 msgstr ""
 
-#: widgets/nscw-widget.php:228
+#: widgets/nscw-widget.php:234
 msgid "2"
 msgstr ""
 
-#: widgets/nscw-widget.php:229
+#: widgets/nscw-widget.php:235
 msgid "3"
 msgstr ""
 
-#: widgets/nscw-widget.php:230
+#: widgets/nscw-widget.php:236
 msgid "4"
 msgstr ""
 
-#: widgets/nscw-widget.php:231
+#: widgets/nscw-widget.php:237
 msgid "5"
 msgstr ""
 
-#: widgets/nscw-widget.php:232
+#: widgets/nscw-widget.php:238
 msgid "6"
 msgstr ""
 
-#: widgets/nscw-widget.php:233
+#: widgets/nscw-widget.php:239
 msgid "7"
 msgstr ""
 
-#: widgets/nscw-widget.php:234
+#: widgets/nscw-widget.php:240
 msgid "8"
 msgstr ""
 
-#: widgets/nscw-widget.php:235
+#: widgets/nscw-widget.php:241
 msgid "9"
 msgstr ""
 
-#: widgets/nscw-widget.php:236
+#: widgets/nscw-widget.php:242
 msgid "10"
 msgstr ""
 
@@ -88,8 +88,8 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:234 widgets/nscw-widget.php:216
-#: widgets/nscw-widget.php:226
+#: admin/class-ns-category-widget-admin.php:234 widgets/nscw-widget.php:222
+#: widgets/nscw-widget.php:232
 msgid "Show All"
 msgstr ""
 
@@ -97,112 +97,117 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
+#: ns-category-widget.php:145
+#. translators: %s: Category name.
+msgid "Feed for all posts filed under %s"
+msgstr ""
+
 #: widgets/nscw-widget.php:9
 msgid "Widget for displaying categories in your way"
 msgstr ""
 
-#: widgets/nscw-widget.php:184
+#: widgets/nscw-widget.php:190
 msgid "Title:"
 msgstr ""
 
-#: widgets/nscw-widget.php:191
+#: widgets/nscw-widget.php:197
 msgid "Taxonomy:"
 msgstr ""
 
-#: widgets/nscw-widget.php:205
+#: widgets/nscw-widget.php:211
 msgid "Parent Category:"
 msgstr ""
 
-#: widgets/nscw-widget.php:223
+#: widgets/nscw-widget.php:229
 msgid "Depth:"
 msgstr ""
 
-#: widgets/nscw-widget.php:241
+#: widgets/nscw-widget.php:247
 msgid "Sort By:"
 msgstr ""
 
-#: widgets/nscw-widget.php:244
+#: widgets/nscw-widget.php:250
 msgid "ID"
 msgstr ""
 
-#: widgets/nscw-widget.php:245
+#: widgets/nscw-widget.php:251
 msgid "Name"
 msgstr ""
 
-#: widgets/nscw-widget.php:246
+#: widgets/nscw-widget.php:252
 msgid "Slug"
 msgstr ""
 
-#: widgets/nscw-widget.php:247
+#: widgets/nscw-widget.php:253
 msgid "Count"
 msgstr ""
 
-#: widgets/nscw-widget.php:252
+#: widgets/nscw-widget.php:258
 msgid "Sort Order:"
 msgstr ""
 
-#: widgets/nscw-widget.php:255
+#: widgets/nscw-widget.php:261
 msgid "Ascending"
 msgstr ""
 
-#: widgets/nscw-widget.php:256
+#: widgets/nscw-widget.php:262
 msgid "Descending"
 msgstr ""
 
-#: widgets/nscw-widget.php:262
+#: widgets/nscw-widget.php:268
 msgid "Hide Empty"
 msgstr ""
 
-#: widgets/nscw-widget.php:268
+#: widgets/nscw-widget.php:274
 msgid "Show Post Count"
 msgstr ""
 
-#: widgets/nscw-widget.php:274
+#: widgets/nscw-widget.php:280
 msgid "Limit:"
 msgstr ""
 
-#: widgets/nscw-widget.php:276
+#: widgets/nscw-widget.php:282
 msgid "Enter limit in number"
 msgstr ""
 
-#: widgets/nscw-widget.php:281
+#: widgets/nscw-widget.php:287
 msgid "Include category:"
 msgstr ""
 
-#: widgets/nscw-widget.php:284 widgets/nscw-widget.php:292
+#: widgets/nscw-widget.php:290 widgets/nscw-widget.php:298
 msgid "Category IDs, separated by commas."
 msgstr ""
 
-#: widgets/nscw-widget.php:284
+#: widgets/nscw-widget.php:290
 msgid "Only displays these categories"
 msgstr ""
 
-#: widgets/nscw-widget.php:289
+#: widgets/nscw-widget.php:295
 msgid "Exclude category:"
 msgstr ""
 
-#: widgets/nscw-widget.php:298
+#: widgets/nscw-widget.php:304
 msgid "Enable Tree"
 msgstr ""
 
-#: widgets/nscw-widget.php:301
+#: widgets/nscw-widget.php:307
 msgid "Advanced Tree settings"
 msgstr ""
 
-#: widgets/nscw-widget.php:306
+#: widgets/nscw-widget.php:312
 msgid "Show Tree Icons"
 msgstr ""
 
-#: widgets/nscw-widget.php:312
+#: widgets/nscw-widget.php:318
 msgid "Show Dots"
 msgstr ""
 
-#: widgets/nscw-widget.php:318
+#: widgets/nscw-widget.php:324
 msgid "Save Tree State"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/plugins/ns-category-widget/"
+msgid "https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -214,5 +219,5 @@ msgid "Nilambar Sharma"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://nilambar.net"
+msgid "https://www.nilambar.net"
 msgstr ""

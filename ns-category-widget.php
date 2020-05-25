@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: NS Category Widget
- * Plugin URI: http://wordpress.org/plugins/ns-category-widget/
+ * Plugin URI: https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html
  * Description: A widget plugin for listing categories and taxonomies in the way you want.
  * Version: 3.1.0
  * Author: Nilambar Sharma
- * Author URI: http://nilambar.net
+ * Author URI: https://www.nilambar.net
  * Text Domain: ns-category-widget
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -46,37 +46,15 @@ if ( is_admin() ) {
  */
 function nscw_register_plugin_widgets() {
 	$obj_nscw = NS_Category_Widget::get_instance();
+
 	$nscw_field_enable_ns_category_widget = $obj_nscw->get_option( 'nscw_field_enable_ns_category_widget' );
+
 	if ( 1 === absint( $nscw_field_enable_ns_category_widget ) ) {
 		register_widget( 'NSCW_Widget' );
 	}
 }
 
 add_action( 'widgets_init', 'nscw_register_plugin_widgets' );
-
-function nscw_hierarchical_category_tree( $cat_id, $args, $is_tree ) {
-	$args['parent'] = absint( $cat_id );
-
-	$next = get_terms( $args );
-
-	if ( $next ) {
-		foreach( $next as $cat ) {
-			echo '<ul><li><a href="' . esc_url( get_term_link( $cat->term_id ) ) . '">' . esc_html( $cat->name ) ;
-			if ( 1 === absint( $is_tree ) && 1 === absint( $args['show_count'] ) ) {
-				echo ' <span>(' . absint( $cat->count ) . ')</span>';
-			}
-			echo '</a>';
-
-			if ( 1 !== absint( $is_tree ) && 1 === absint( $args['show_count'] ) ) {
-				echo ' <span>(' . absint( $cat->count ) . ')</span>';
-			}
-
-			nscw_hierarchical_category_tree( $cat->term_id, $args, $is_tree );
-		}
-	}
-
-	echo '</li></ul>';
-}
 
 class NSCW_Walker_Category extends Walker_Category {
 
@@ -164,7 +142,7 @@ class NSCW_Walker_Category extends Walker_Category {
 
     		if ( empty( $args['feed'] ) ) {
     			/* translators: %s: Category name. */
-    			$alt = ' alt="' . sprintf( __( 'Feed for all posts filed under %s' ), $cat_name ) . '"';
+    			$alt = ' alt="' . sprintf( __( 'Feed for all posts filed under %s', 'ns-category-widget' ), $cat_name ) . '"';
     		} else {
     			$alt   = ' alt="' . $args['feed'] . '"';
     			$name  = $args['feed'];
@@ -185,10 +163,6 @@ class NSCW_Walker_Category extends Walker_Category {
     			$link .= ')';
     		}
     	}
-
-    	// if ( ! empty( $args['show_count'] ) ) {
-    	// 	$link .= ' (' . number_format_i18n( $category->count ) . ')';
-    	// }
 
     	if ( 'list' == $args['style'] ) {
     		$output     .= "\t<li";
