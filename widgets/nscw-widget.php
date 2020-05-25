@@ -45,16 +45,17 @@ class NSCW_Widget extends WP_Widget {
 		}
 
 		$cat_args = array(
-			'title_li'    => '',
-			'depth'       => $depth,
-			'orderby'     => $orderby,
-			'order'       => $order,
-			'hide_empty'  => $hide_empty,
-			'show_count'  => $show_post_count,
-			'number'      => $number,
-			'include'     => wp_parse_id_list( $include_category ),
-			'exclude'     => wp_parse_id_list( $exclude_category ),
-			'taxonomy'    => $taxonomy,
+			'title_li'   => '',
+			'depth'      => $depth,
+			'orderby'    => $orderby,
+			'order'      => $order,
+			'hide_empty' => $hide_empty,
+			'show_count' => $show_post_count,
+			'number'     => $number,
+			'include'    => wp_parse_id_list( $include_category ),
+			'exclude'    => wp_parse_id_list( $exclude_category ),
+			'taxonomy'   => $taxonomy,
+			'walker'     => new NSCW_Walker_Category,
 		);
 
 		if ( $parent_category ) {
@@ -68,7 +69,9 @@ class NSCW_Widget extends WP_Widget {
 		}
 
 		echo '<div class="' . $class_text . '">';
-		nscw_hierarchical_category_tree( 0, apply_filters( 'widget_categories_args', $cat_args ), $enable_tree );
+		echo '<ul class="cat-list">';
+		wp_list_categories( apply_filters( 'widget_categories_args', $cat_args ) );
+		echo '</ul>';
 		echo '</div>';
 
 		$obj_nscw = NS_Category_Widget::get_instance();
