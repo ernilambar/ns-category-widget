@@ -37,6 +37,9 @@ gulp.task( 'watch', function() {
         open: true
     });
 
+    // Watch JS files.
+    gulp.watch( rootPath + '**/**/*.js' ).on('change',browserSync.reload);
+
     // Watch CSS files.
     gulp.watch( rootPath + '**/**/*.css' ).on('change',browserSync.reload);
 

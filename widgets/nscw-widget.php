@@ -16,7 +16,8 @@ class NSCW_Widget extends WP_Widget {
 
 		extract( $args );
 
-		$title            = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
 		$taxonomy         = $instance['taxonomy'];
 		$parent_category  = $instance['parent_category'];
 		$depth            = $instance['depth'];
@@ -27,9 +28,11 @@ class NSCW_Widget extends WP_Widget {
 		$number           = $instance['number'];
 		$include_category = $instance['include_category'];
 		$exclude_category = $instance['exclude_category'];
-		if ( '' != $exclude_category  ) {
+
+		if ( ! empty( $exclude_category ) ) {
 			$include_category = '';
 		}
+
 		$enable_tree     = $instance['enable_tree'];
 		$tree_show_icons = $instance['tree_show_icons'];
 		$tree_show_dots  = $instance['tree_show_dots'];
@@ -42,26 +45,28 @@ class NSCW_Widget extends WP_Widget {
 		}
 
 		$cat_args = array(
-		'title_li'    => '',
-		'depth'       => $depth,
-		'orderby'     => $orderby,
-		'order'       => $order,
-		'hide_empty'  => $hide_empty,
-		'show_count'  => $show_post_count,
-		'number'      => $number,
-		'include'     => $include_category,
-		'exclude'     => $exclude_category,
-		'taxonomy'    => $taxonomy,
-
+			'title_li'    => '',
+			'depth'       => $depth,
+			'orderby'     => $orderby,
+			'order'       => $order,
+			'hide_empty'  => $hide_empty,
+			'show_count'  => $show_post_count,
+			'number'      => $number,
+			'include'     => wp_parse_id_list( $include_category ),
+			'exclude'     => wp_parse_id_list( $exclude_category ),
+			'taxonomy'    => $taxonomy,
 		);
 
 		if ( $parent_category ) {
 			$cat_args['child_of'] = $parent_category;
 		}
+
 		$class_text = 'nscw-inactive-tree';
+
 		if ( 1 == $enable_tree ) {
 			$class_text = 'nscw-active-tree';
 		}
+
 		echo '<div class="' . $class_text . '">';
 		echo '<ul class="cat-list">';
 		wp_list_categories( apply_filters( 'widget_categories_args', $cat_args ) );
@@ -69,6 +74,7 @@ class NSCW_Widget extends WP_Widget {
 		echo '</div>';
 
 		$obj_nscw = NS_Category_Widget::get_instance();
+
 		$nscw_field_enable_tree_script = $obj_nscw->get_option( 'nscw_field_enable_tree_script' );
 
 		if ( 1 == $enable_tree && 1 == $nscw_field_enable_tree_script ) {
@@ -105,7 +111,6 @@ class NSCW_Widget extends WP_Widget {
 		} // End if.
 
 		echo $args['after_widget'];
-
 	}
 
 	function update( $new_instance, $old_instance ) {
