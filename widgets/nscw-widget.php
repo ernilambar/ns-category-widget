@@ -109,7 +109,6 @@ class NSCW_Widget extends WP_Widget {
 	}
 
 	function update( $new_instance, $old_instance ) {
-
 		$instance = array();
 
 		$instance['title']            = sanitize_text_field( $new_instance['title'] );
@@ -120,24 +119,25 @@ class NSCW_Widget extends WP_Widget {
 		$instance['order']            = sanitize_text_field( $new_instance['order'] );
 		$instance['hide_empty']       = ! empty( $new_instance['hide_empty'] ) ? 1 : 0;
 		$instance['show_post_count']  = ! empty( $new_instance['show_post_count'] ) ? 1 : 0;
-		$instance['number']           = ( ! empty( $new_instance['number'] ) ) ? intval( strip_tags( $new_instance['number'] ) ): '';
-		$instance['include_category'] = trim( strip_tags( $new_instance['include_category'] ) );
+		$instance['number']           = ( ! empty( $new_instance['number'] ) ) ? absint( $new_instance['number'] ) : '';
+		$instance['include_category'] = trim( sanitize_text_field( $new_instance['include_category'] ) );
 
-		$str                          = explode( ',', $instance['include_category'] );
+		$str = explode( ',', $instance['include_category'] );
 		array_walk( $str, 'intval' );
 		$instance['include_category'] = implode( ',',  $str );
 
-		$instance['exclude_category'] = strip_tags( $new_instance['exclude_category'] );
-		$str                          = explode( ',', $instance['exclude_category'] );
+		$instance['exclude_category'] = sanitize_text_field( $new_instance['exclude_category'] );
+
+		$str = explode( ',', $instance['exclude_category'] );
 		array_walk( $str, 'intval' );
 		$instance['exclude_category'] = implode( ',',  $str );
+
 		$instance['enable_tree']      = ! empty( $new_instance['enable_tree'] ) ? 1 : 0;
 		$instance['tree_show_icons']  = ! empty( $new_instance['tree_show_icons'] ) ? 1 : 0;
 		$instance['tree_show_dots']   = ! empty( $new_instance['tree_show_dots'] ) ? 1 : 0;
 		$instance['tree_save_state']  = ! empty( $new_instance['tree_save_state'] ) ? 1 : 0;
 
 		return $instance;
-
 	}
 
 	function form( $instance ) {
@@ -193,7 +193,7 @@ class NSCW_Widget extends WP_Widget {
 	      <select id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>" class="nscw-taxonomy" data-name="<?php echo $this->get_field_name( 'parent_category' ); ?>" data-id="<?php echo $this->get_field_id( 'parent_category' ); ?>" >
 		        <?php
 		        foreach ( $wp_taxonomies as $taxonomy_item ) {
-					if ( false === in_array( $taxonomy_item->name, array( 'post_format', 'post_tag', 'link_category', 'nav_menu' ) ) ) {
+					if ( false === in_array( $taxonomy_item->name, array( 'post_format', 'link_category', 'nav_menu' ) ) ) {
 						echo '<option '.selected( $taxonomy, $taxonomy_item->name, false ) . ' value="'.$taxonomy_item->name.'">'.$taxonomy_item->label.'</option>';
 					}
 				}
