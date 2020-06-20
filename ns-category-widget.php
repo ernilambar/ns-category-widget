@@ -50,7 +50,7 @@ function nscw_register_plugin_widgets() {
 
 	$nscw_field_enable_ns_category_widget = $obj_nscw->get_option( 'nscw_field_enable_ns_category_widget' );
 
-	if ( 1 === absint( $nscw_field_enable_ns_category_widget ) ) {
+	if ( true === rest_sanitize_boolean( $nscw_field_enable_ns_category_widget ) ) {
 		register_widget( 'NSCW_Widget' );
 	}
 }

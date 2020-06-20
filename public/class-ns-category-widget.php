@@ -82,8 +82,8 @@ class NS_Category_Widget {
 
 		self :: $default_options = array(
 				'nscw_field_enable_ns_category_widget' => true,
-				'nscw_field_enable_tree_script'        => false,
-				'nscw_field_enable_tree_style'         => false,
+				'nscw_field_enable_tree_script'        => true,
+				'nscw_field_enable_tree_style'         => true,
 		);
 		// Set Default options of the plugin.
 		$this->_setDefaultOptions();
@@ -276,7 +276,7 @@ class NS_Category_Widget {
 	 */
 	public function enqueue_styles() {
 
-		if ( 1 == $this->options['nscw_field_enable_tree_style'] ) {
+		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_tree_style'] ) ) {
 			wp_enqueue_style( $this->plugin_slug . '-tree-style', plugins_url( 'assets/css/themes/default/style.css', __FILE__ ), array(), self::VERSION );
 		}
 
@@ -288,8 +288,7 @@ class NS_Category_Widget {
 	 * @since 1.0.0
 	 */
 	public function enqueue_scripts() {
-
-		if ( 1 == $this->options['nscw_field_enable_tree_script'] ) {
+		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_tree_script'] ) ) {
 			wp_enqueue_script( 'tree-script', plugins_url( 'assets/js/jstree.min.js', __FILE__ ), array( 'jquery' ), '3.3.9', true );
 			wp_enqueue_script( 'tree-script-state', plugins_url( 'assets/js/jstree.state.js', __FILE__ ), array( 'jquery' ), '3.3.9', true );
 			wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
