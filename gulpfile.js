@@ -25,6 +25,7 @@ var deploy_files_list = [
 	'admin/**',
 	'languages/**',
 	'public/**',
+	'vendor/**',
 	'widgets/**',
 	'readme.txt',
 	pkg.main_file
