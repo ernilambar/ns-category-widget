@@ -1,7 +1,7 @@
 {
   "name": "ns-category-widget",
   "title": "NS Category Widget",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "license": "GPL-2.0+",
   "main_file": "ns-category-widget.php",
   "scripts": {
