@@ -55,14 +55,14 @@ class NS_Category_Widget_Admin {
 		$this->options = $plugin->get_options_array();
 
 		// Add the options page and menu item.
-		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
+		// add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
 		// Add an action link pointing to the options page.
 		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
 		// Define custom functionality.
-		add_action( 'admin_init', array( $this, 'plugin_register_settings' ) );
+		// add_action( 'admin_init', array( $this, 'plugin_register_settings' ) );
 
 		if ( $this->options['nscw_field_enable_ns_category_widget'] ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'nscw_scripts_enqueue' ) );
@@ -74,10 +74,10 @@ class NS_Category_Widget_Admin {
 
 		$obj->set_page(
 			array(
-				'page_title'  => esc_html__( 'NSCWW', 'ns-category-widget' ),
-				'menu_title'  => esc_html__( 'NSCWW', 'ns-category-widget' ),
+				'page_title'  => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
+				'menu_title'  => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
 				'capability'  => 'manage_options',
-				'menu_slug'   => 'nscw',
+				'menu_slug'   => 'ns-category-widget',
 				'option_slug' => 'nscw_plugin_options',
 			)
 		);
@@ -98,7 +98,7 @@ class NS_Category_Widget_Admin {
 				'type'      => 'checkbox',
 				'title'     => esc_html__( 'Enable NS Category Widget', 'ns-category-widget' ),
 				'side_text' => esc_html__( 'Enable', 'ns-category-widget' ),
-				'default'   => true,
+				'default'   => 1,
 			)
 		);
 
@@ -110,7 +110,7 @@ class NS_Category_Widget_Admin {
 				'type'      => 'checkbox',
 				'title'     => esc_html__( 'Enable Tree Script', 'ns-category-widget' ),
 				'side_text' => esc_html__( 'Enable', 'ns-category-widget' ),
-				'default'   => true,
+				'default'   => 1,
 			)
 		);
 
@@ -122,7 +122,7 @@ class NS_Category_Widget_Admin {
 				'type'      => 'checkbox',
 				'title'     => esc_html__( 'Enable Tree Style', 'ns-category-widget' ),
 				'side_text' => esc_html__( 'Enable', 'ns-category-widget' ),
-				'default'   => true,
+				'default'   => 1,
 			)
 		);
 

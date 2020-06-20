@@ -81,9 +81,9 @@ class NS_Category_Widget {
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		self :: $default_options = array(
-				'nscw_field_enable_ns_category_widget' => 1,
-				'nscw_field_enable_tree_script'        => 1,
-				'nscw_field_enable_tree_style'         => 1,
+				'nscw_field_enable_ns_category_widget' => true,
+				'nscw_field_enable_tree_script'        => false,
+				'nscw_field_enable_tree_style'         => false,
 		);
 		// Set Default options of the plugin.
 		$this->_setDefaultOptions();
