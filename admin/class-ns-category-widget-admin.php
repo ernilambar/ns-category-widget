@@ -82,10 +82,55 @@ class NS_Category_Widget_Admin {
 			)
 		);
 
+		// Tab: nscw_settings_tab.
+		$obj->add_tab(
+			array(
+				'id'    => 'nscw_settings_tab',
+				'title' => esc_html__( 'Settings', 'ns-category-widget' ),
+			)
+		);
+
+		// Field: nscw_field_enable_ns_category_widget.
+		$obj->add_field(
+			'nscw_settings_tab',
+			array(
+				'id'        => 'nscw_field_enable_ns_category_widget',
+				'type'      => 'checkbox',
+				'title'     => esc_html__( 'Enable NS Category Widget', 'ns-category-widget' ),
+				'side_text' => esc_html__( 'Enable', 'ns-category-widget' ),
+				'default'   => true,
+			)
+		);
+
+		// Field: nscw_field_enable_tree_script.
+		$obj->add_field(
+			'nscw_settings_tab',
+			array(
+				'id'        => 'nscw_field_enable_tree_script',
+				'type'      => 'checkbox',
+				'title'     => esc_html__( 'Enable Tree Script', 'ns-category-widget' ),
+				'side_text' => esc_html__( 'Enable', 'ns-category-widget' ),
+				'default'   => true,
+			)
+		);
+
+		// Field: nscw_field_enable_tree_style.
+		$obj->add_field(
+			'nscw_settings_tab',
+			array(
+				'id'        => 'nscw_field_enable_tree_style',
+				'type'      => 'checkbox',
+				'title'     => esc_html__( 'Enable Tree Style', 'ns-category-widget' ),
+				'side_text' => esc_html__( 'Enable', 'ns-category-widget' ),
+				'default'   => true,
+			)
+		);
+
 		// Sidebar.
 		$obj->set_sidebar(
 			array(
 				'render_callback' => array( $this, 'render_sidebar' ),
+				'width'           => 30,
 			)
 		);
 
