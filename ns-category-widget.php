@@ -22,10 +22,12 @@ define( 'NS_CATEGORY_WIDGET_BASENAME', basename( dirname( __FILE__ ) ) );
 define( 'NS_CATEGORY_WIDGET_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'NS_CATEGORY_WIDGET_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
 
-// Public-Facing Functionality.
-require_once( plugin_dir_path( __FILE__ ) . 'public/class-ns-category-widget.php' );
+// Init autoload.
+require_once NS_CATEGORY_WIDGET_DIR . '/vendor/autoload.php';
 
-require_once( NS_CATEGORY_WIDGET_DIR . '/widgets/nscw-widget.php' );
+// Public-Facing Functionality.
+require_once NS_CATEGORY_WIDGET_DIR . '/public/class-ns-category-widget.php';
+require_once NS_CATEGORY_WIDGET_DIR . '/widgets/nscw-widget.php';
 
 register_activation_hook( __FILE__, array( 'NS_Category_Widget', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'NS_Category_Widget', 'deactivate' ) );
@@ -34,11 +36,10 @@ add_action( 'plugins_loaded', array( 'NS_Category_Widget', 'get_instance' ) );
 
 // Dashboard and Administrative Functionality.
 if ( is_admin() ) {
-
 	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-ns-category-widget-admin.php' );
 	add_action( 'plugins_loaded', array( 'NS_Category_Widget_Admin', 'get_instance' ) );
-
 }
+
 /**
  * Register plugin widgets.
  *

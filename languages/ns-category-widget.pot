@@ -2,10 +2,10 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: NS Category Widget 3.1.0\n"
+"Project-Id-Version: NS Category Widget 3.1.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ns-category-widget\n"
-"POT-Creation-Date: 2020-05-25 16:00:25+00:00\n"
+"POT-Creation-Date: 2020-06-20 04:24:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,52 +54,376 @@ msgstr ""
 msgid "10"
 msgstr ""
 
+#: admin/class-ns-category-widget-admin.php:77
+#: admin/class-ns-category-widget-admin.php:78
+msgid "NSCWW"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "NS Category Widget"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:141
+#: admin/class-ns-category-widget-admin.php:164
 msgid "Settings"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:157
+#: admin/class-ns-category-widget-admin.php:180
 msgid "General Settings"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:159
+#: admin/class-ns-category-widget-admin.php:182
 msgid "Enable NS Category Widget"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:161
+#: admin/class-ns-category-widget-admin.php:184
 msgid "Tree Settings"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:163
+#: admin/class-ns-category-widget-admin.php:186
 msgid "Enable Tree Script"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:164
+#: admin/class-ns-category-widget-admin.php:187
 msgid "Enable Tree Style"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:194
-#: admin/class-ns-category-widget-admin.php:201
-#: admin/class-ns-category-widget-admin.php:208
+#: admin/class-ns-category-widget-admin.php:217
+#: admin/class-ns-category-widget-admin.php:224
+#: admin/class-ns-category-widget-admin.php:231
 msgid "Enable"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:234 widgets/nscw-widget.php:222
+#: admin/class-ns-category-widget-admin.php:257 widgets/nscw-widget.php:222
 #: widgets/nscw-widget.php:232
 msgid "Show All"
 msgstr ""
 
-#: admin/views/admin.php:52
+#: admin/views/admin.php:52 vendor/ernilambar/optioner/src/Optioner.php:270
 msgid "Save Changes"
 msgstr ""
 
-#: ns-category-widget.php:145
+#: ns-category-widget.php:146
 #. translators: %s: Category name.
 msgid "Feed for all posts filed under %s"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:35
+msgid "Basic"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:45
+msgid "Sample Heading"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:46
+msgid "This is description."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:56
+msgid "Sample Text"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:57
+msgid "Description for sample text."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:58
+msgid "Enter text"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:69
+msgid "Sample Checkbox"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:70
+msgid "Enable sample checkbox"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:71
+msgid "Description for sample checkbox field."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:81
+msgid "Sample Select"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:82
+msgid "Description of sample select."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:84
+#: vendor/ernilambar/optioner/optioner.php:101
+#: vendor/ernilambar/optioner/optioner.php:292
+#: vendor/ernilambar/optioner/optioner.php:317
+#: vendor/ernilambar/optioner/optioner.php:334
+#: vendor/ernilambar/optioner/optioner.php:352
+#: vendor/ernilambar/optioner/optioner.php:369
+msgid "First"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:85
+#: vendor/ernilambar/optioner/optioner.php:102
+#: vendor/ernilambar/optioner/optioner.php:293
+#: vendor/ernilambar/optioner/optioner.php:318
+#: vendor/ernilambar/optioner/optioner.php:335
+#: vendor/ernilambar/optioner/optioner.php:353
+#: vendor/ernilambar/optioner/optioner.php:370
+msgid "Second"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:86
+#: vendor/ernilambar/optioner/optioner.php:294
+#: vendor/ernilambar/optioner/optioner.php:319
+#: vendor/ernilambar/optioner/optioner.php:336
+#: vendor/ernilambar/optioner/optioner.php:354
+#: vendor/ernilambar/optioner/optioner.php:371
+msgid "Third"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:97
+msgid "Sample Radio"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:98
+msgid "Description of sample radio."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:113
+msgid "Sample Image"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:114
+msgid "Description for sample image."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:124
+msgid "Sample Color"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:125
+msgid "Description of sample color."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:133
+msgid "Text"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:143
+msgid "Text Regular"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:144
+msgid "Description of text regular."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:154
+msgid "Text Small"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:155
+msgid "Description of text small."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:166
+msgid "Text Tiny"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:167
+msgid "Description of text tiny."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:178
+msgid "Text Large"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:179
+msgid "Description of text large."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:190
+msgid "Text Password"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:191
+msgid "Description of text password."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:201
+msgid "Sample URL"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:202
+msgid "Description of sample URL."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:203
+msgid "Enter full URL."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:213
+msgid "Sample Number"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:214
+msgid "Description of sample number."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:224
+msgid "Sample Email"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:225
+msgid "Description of sample email."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:233
+msgid "Textarea"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:243
+msgid "Textarea Regular"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:244
+msgid "This is regular textarea."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:245
+#: vendor/ernilambar/optioner/optioner.php:257
+msgid "Enter content."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:255
+msgid "Textarea Large"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:256
+msgid "This is large textarea."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:266
+msgid "Checkbox"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:277
+msgid "Checkbox Simple"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:278
+msgid "Enable simple checkbox"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:279
+msgid "Description for simple checkbox field."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:289
+msgid "Checkbox Multiple"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:290
+msgid "Description for checkbox multiple."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:295
+msgid "Fourth"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:304
+msgid "Selection"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:314
+msgid "Select Simple"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:315
+msgid "Description of select simple."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:330
+msgid "Select Null Allowed"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:331
+msgid "Description of select null allowed."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:348
+msgid "Radio Horizontal"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:349
+msgid "Description of radio horizontal."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:365
+msgid "Radio Vertical"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:366
+msgid "Description of radio vertical."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:380
+msgid "Editor"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:390
+msgid "Editor Visual Mode Only"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:391
+msgid "Description for editor visual mode only."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:407
+msgid "Editor Text Mode Only"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:408
+msgid "Description for editor text mode only."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:424
+msgid "Editor Small"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:425
+msgid "Description for editor small."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:440
+msgid "Editor Large"
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:441
+msgid "Description for editor large."
+msgstr ""
+
+#: vendor/ernilambar/optioner/optioner.php:449
+msgid "Features"
+msgstr ""
+
+#: vendor/ernilambar/optioner/src/Optioner.php:639
+msgid "Upload"
+msgstr ""
+
+#: vendor/ernilambar/optioner/src/Optioner.php:639
+msgid "Select Image"
+msgstr ""
+
+#: vendor/ernilambar/optioner/src/Optioner.php:639
+msgid "Choose Image"
+msgstr ""
+
+#: vendor/ernilambar/optioner/src/Optioner.php:736
+msgid "Select"
+msgstr ""
+
+#: vendor/ernilambar/optioner/src/Optioner.php:857
+#: vendor/ernilambar/optioner/src/Optioner.php:858
+msgid "Optioner"
 msgstr ""
 
 #: widgets/nscw-widget.php:9
@@ -220,4 +544,9 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://www.nilambar.net"
+msgstr ""
+
+#: vendor/ernilambar/optioner/src/Optioner.php:650
+msgctxt "remove button"
+msgid "X"
 msgstr ""
