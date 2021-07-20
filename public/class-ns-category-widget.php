@@ -19,7 +19,7 @@ class NS_Category_Widget {
 	 *
 	 * @var string
 	 */
-	const VERSION = '3.1.1';
+	const VERSION = '3.1.2';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -289,8 +289,8 @@ class NS_Category_Widget {
 	 */
 	public function enqueue_scripts() {
 		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_tree_script'] ) ) {
-			wp_enqueue_script( 'tree-script', plugins_url( 'assets/js/jstree.min.js', __FILE__ ), array( 'jquery' ), '3.3.9', true );
-			wp_enqueue_script( 'tree-script-state', plugins_url( 'assets/js/jstree.state.js', __FILE__ ), array( 'jquery' ), '3.3.9', true );
+			wp_enqueue_script( 'tree-script', plugins_url( 'assets/js/jstree.min.js', __FILE__ ), array( 'jquery' ), '3.3.11', true );
+			wp_enqueue_script( 'tree-script-state', plugins_url( 'assets/js/jstree.state.js', __FILE__ ), array( 'jquery' ), '3.3.11', true );
 			wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
 		}
 	}

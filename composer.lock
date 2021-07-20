@@ -4,23 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18958d148455568c70c6bb13949d82f4",
+    "content-hash": "ce781b54d7159753c02da7c76cd83d23",
     "packages": [
         {
             "name": "ernilambar/optioner",
-            "version": "1.0.4",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/optioner.git",
-                "reference": "44e38852f4eb9e4f5e9dc048ab2b956af68583f9"
+                "reference": "c6959a2b5338e2744dc9b1d3c503f905eabc2be9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/44e38852f4eb9e4f5e9dc048ab2b956af68583f9",
-                "reference": "44e38852f4eb9e4f5e9dc048ab2b956af68583f9",
+                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/c6959a2b5338e2744dc9b1d3c503f905eabc2be9",
+                "reference": "c6959a2b5338e2744dc9b1d3c503f905eabc2be9",
                 "shasum": ""
             },
             "require": {
+                "kirki-framework/url-getter": "^1.0",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -47,7 +48,49 @@
                 "option",
                 "wordpress"
             ],
-            "time": "2020-06-19T14:41:23+00:00"
+            "time": "2020-07-01T02:03:06+00:00"
+        },
+        {
+            "name": "kirki-framework/url-getter",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/url-getter.git",
+                "reference": "2b1b464b4ba7d2a3d37094669dd66f20d39fa9e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/url-getter/zipball/2b1b464b4ba7d2a3d37094669dd66f20d39fa9e3",
+                "reference": "2b1b464b4ba7d2a3d37094669dd66f20d39fa9e3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Helper component to get the URL of a file in WordPress.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2019-09-08T18:32:10+00:00"
         }
     ],
     "packages-dev": [],
