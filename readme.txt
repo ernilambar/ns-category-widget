@@ -4,9 +4,9 @@ Contributors: rabmalin
 Donate link: https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html
 Tags: category, listing, widget, list, post, posts, sidebar, taxonomy, custom taxonomy, parent category
 Requires at least: 5.0
-Requires PHP: 5.6.20
-Tested up to: 5.8
-Stable tag: 3.1.2
+Requires PHP: 5.6
+Tested up to: 5.9
+Stable tag: 3.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ Nice, make a post on the [Support Forum](http://wordpress.org/support/plugin/ns-
 1. Adding widget in sidebar
 
 == Changelog ==
+
+= 3.1.3 - 1 Apr 2021 =
+* Minor bug fixes
 
 = 3.1.2 - 20 Jul 2021 =
 * Update jsTree

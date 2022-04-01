@@ -220,6 +220,7 @@ class NS_Category_Widget_Admin {
 				</ul>
 			</div>
 		</div><!-- .sidebox -->
+
 		<div class="sidebox">
 			<h3 class="box-heading">My Blog</h3>
 			<div class="box-content">
@@ -245,6 +246,16 @@ class NS_Category_Widget_Admin {
 					</ul>
 
 				<?php endif; ?>
+			</div>
+		</div><!-- .sidebox -->
+		<div class="sidebox">
+			<h3 class="box-heading">Other Plugins</h3>
+			<div class="box-content">
+				<ul>
+					<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
+				<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
+				<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
+				</ul>
 			</div>
 		</div><!-- .sidebox -->
 		<?php
