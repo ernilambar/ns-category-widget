@@ -148,7 +148,7 @@ class NS_Category_Widget_Admin {
 		if ( 'widgets.php' !== $hook ) {
 		    return;
 		}
-		wp_register_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js' );
+		wp_register_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js', array( 'jquery'), NS_CATEGORY_WIDGET_VERSION );
 		wp_localize_script( 'nscw-widget-script', 'ns_category_widget_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 		wp_enqueue_script( 'nscw-widget-script' );
 
@@ -214,15 +214,29 @@ class NS_Category_Widget_Admin {
 			<div class="box-content">
 				<ul>
 					<li><strong>Questions, bugs or great ideas?</strong></li>
-					<li><a href="http://wordpress.org/support/plugin/ns-category-widget" target="_blank">Visit our plugin support page</a></li>
+					<li><a href="https://wordpress.org/support/plugin/ns-category-widget/" target="_blank">Visit our plugin support page</a></li>
 					<li><strong>Wanna help make this plugin better?</strong></li>
-					<li><a href="http://wordpress.org/support/view/plugin-reviews/ns-category-widget" target="_blank">Review and rate this plugin on WordPress.org</a></li>
+					<li><a href="https://wordpress.org/support/plugin/ns-category-widget/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></li>
 				</ul>
 			</div>
 		</div><!-- .sidebox -->
 
 		<div class="sidebox">
-			<h3 class="box-heading">My Blog</h3>
+			<h3 class="box-heading">Recommended Plugins</h3>
+			<div class="box-content">
+				<ol>
+					<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
+					<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
+					<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
+					<li><a href="https://wordpress.org/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
+					<li><a href="https://wordpress.org/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
+					<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></li>
+				</ol>
+			</div>
+		</div><!-- .sidebox -->
+
+		<div class="sidebox">
+			<h3 class="box-heading">Recent Blog Posts</h3>
 			<div class="box-content">
 				<?php
 				$rss = fetch_feed( 'https://www.nilambar.net/category/wordpress/feed' );
@@ -248,16 +262,7 @@ class NS_Category_Widget_Admin {
 				<?php endif; ?>
 			</div>
 		</div><!-- .sidebox -->
-		<div class="sidebox">
-			<h3 class="box-heading">Other Plugins</h3>
-			<div class="box-content">
-				<ul>
-					<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
-				<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
-				<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
-				</ul>
-			</div>
-		</div><!-- .sidebox -->
+
 		<?php
 	}
 }
