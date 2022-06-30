@@ -49,6 +49,9 @@ class NS_Category_Widget_Admin {
 		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
+		// Add admin notice.
+		add_action( 'admin_init', array( $this, 'setup_custom_notice' ) );
+
 		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_ns_category_widget'] ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'nscw_scripts_enqueue' ) );
 			add_action( 'wp_ajax_populate_categories', array( $this, 'ajax_populate_categories' ) );
@@ -264,5 +267,15 @@ class NS_Category_Widget_Admin {
 		</div><!-- .sidebox -->
 
 		<?php
+	}
+
+	public function setup_custom_notice() {
+		// Setup notice.
+		\Nilambar\AdminNotice\Notice::init(
+			array(
+				'slug' => NS_CATEGORY_WIDGET_SLUG,
+				'name' => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
+			)
+		);
 	}
 }

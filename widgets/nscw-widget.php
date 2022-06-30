@@ -6,10 +6,10 @@ class NSCW_Widget extends WP_Widget {
 
 		$widget_ops = array(
 			'classname'   => 'widget_ns_category_widget',
-			'description' => __( 'Widget for displaying categories in your way','ns-category-widget' ),
+			'description' => esc_html__( 'Widget for displaying categories in your way','ns-category-widget' ),
 			);
 
-		parent::__construct( 'ns-category-widget', __( 'NS Category Widget', 'ns-category-widget' ), $widget_ops );
+		parent::__construct( 'ns-category-widget', esc_html__( 'NS Category Widget', 'ns-category-widget' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -152,7 +152,7 @@ class NSCW_Widget extends WP_Widget {
 
 		// Defaults.
 		$instance = wp_parse_args( (array) $instance, array(
-			'title'            => 'Categories',
+			'title'            => esc_html__( 'Categories', 'ns-category-widget' ),
 			'taxonomy'         => 'category',
 			'parent_category'  => '',
 			'depth '           => 1,
@@ -230,16 +230,16 @@ class NSCW_Widget extends WP_Widget {
 	      </label>
 	      <select name="<?php echo $this->get_field_name( 'depth' ); ?>" id="<?php echo $this->get_field_id( 'depth' ); ?>">
 	        <option value="0" <?php selected( $depth, '0' );?>><?php _e( 'Show All','ns-category-widget' );?> </option>
-	        <option value="1" <?php selected( $depth, '1' );?> > <?php _e( '1', 'ns-category-widget' ); ?> </option>
-	        <option value="2" <?php selected( $depth, '2' );?> > <?php _e( '2', 'ns-category-widget' ); ?> </option>
-	        <option value="3" <?php selected( $depth, '3' );?> > <?php _e( '3', 'ns-category-widget' ); ?> </option>
-	        <option value="4" <?php selected( $depth, '4' );?> > <?php _e( '4', 'ns-category-widget' ); ?> </option>
-	        <option value="5" <?php selected( $depth, '5' );?> > <?php _e( '5', 'ns-category-widget' ); ?> </option>
-	        <option value="6" <?php selected( $depth, '6' );?> > <?php _e( '6', 'ns-category-widget' ); ?> </option>
-	        <option value="7" <?php selected( $depth, '7' );?> > <?php _e( '7', 'ns-category-widget' ); ?> </option>
-	        <option value="8" <?php selected( $depth, '8' );?> > <?php _e( '8', 'ns-category-widget' ); ?> </option>
-	        <option value="9" <?php selected( $depth, '9' );?> > <?php _e( '9', 'ns-category-widget' ); ?> </option>
-	        <option value="10" <?php selected( $depth, '10' );?> > <?php _e( '10', 'ns-category-widget' ); ?> </option>
+	        <option value="1" <?php selected( $depth, '1' );?>>1</option>
+	        <option value="2" <?php selected( $depth, '2' );?>>2</option>
+	        <option value="3" <?php selected( $depth, '3' );?>>3</option>
+	        <option value="4" <?php selected( $depth, '4' );?>>4</option>
+	        <option value="5" <?php selected( $depth, '5' );?>>5</option>
+	        <option value="6" <?php selected( $depth, '6' );?>>6</option>
+	        <option value="7" <?php selected( $depth, '7' );?>>7</option>
+	        <option value="8" <?php selected( $depth, '8' );?>>8</option>
+	        <option value="9" <?php selected( $depth, '9' );?>>9</option>
+	        <option value="10" <?php selected( $depth, '10' );?>>10</option>
 	      </select>
 	    </p>
 	    <p>

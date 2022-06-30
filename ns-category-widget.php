@@ -19,6 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'NS_CATEGORY_WIDGET_VERSION', '3.1.4' );
+define( 'NS_CATEGORY_WIDGET_SLUG', 'ns-category-widget' );
 define( 'NS_CATEGORY_WIDGET_BASENAME', basename( dirname( __FILE__ ) ) );
 define( 'NS_CATEGORY_WIDGET_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'NS_CATEGORY_WIDGET_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
