@@ -19,7 +19,7 @@ class NS_Category_Widget {
 	 *
 	 * @var string
 	 */
-	const VERSION = '3.1.3';
+	const VERSION = NS_CATEGORY_WIDGET_VERSION;
 
 	/**
 	 * Unique identifier for your plugin.

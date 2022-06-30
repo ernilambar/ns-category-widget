@@ -1,5 +1,5 @@
 // Env.
-require('dotenv').config()
+require('dotenv').config();
 
 // Config.
 var rootPath = './';
@@ -41,13 +41,13 @@ gulp.task( 'watch', function() {
     });
 
     // Watch JS files.
-    gulp.watch( rootPath + '**/**/*.js' ).on('change',browserSync.reload);
+    gulp.watch(rootPath + '**/**/*.js').on('change',browserSync.reload);
 
     // Watch CSS files.
-    gulp.watch( rootPath + '**/**/*.css' ).on('change',browserSync.reload);
+    gulp.watch(rootPath + '**/**/*.css').on('change',browserSync.reload);
 
     // Watch PHP files.
-    gulp.watch( rootPath + '**/**/*.php' ).on('change',browserSync.reload);
+    gulp.watch(rootPath + '**/**/*.php').on('change',browserSync.reload);
 });
 
 // Clean deploy folder.
@@ -57,7 +57,7 @@ gulp.task('clean:deploy', function() {
 
 // Copy to deploy folder.
 gulp.task('copy:deploy', function() {
-	return gulp.src(deploy_files_list, {base:'.'})
+	return gulp.src(deploy_files_list, { base: '.' })
 	    .pipe(gulp.dest('deploy/' + pkg.name))
 	    .pipe(zip(pkg.name + '.zip'))
 	    .pipe(gulp.dest('deploy'))
