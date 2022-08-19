@@ -1,0 +1,22 @@
+{
+	"easyReplaceInFiles": [
+		{
+			"files": "readme.txt",
+			"from": "Stable tag:\\s?(.+)",
+			"type": "regex",
+			"to": "Stable tag: $npm_package_version"
+		},
+		{
+			"files": "ns-category-widget.php",
+			"from": "Version:\\s?(.+)",
+			"type": "regex",
+			"to": "Version: $npm_package_version"
+		},
+		{
+			"files": "ns-category-widget.php",
+			"from": "define\\( \\'NS_CATEGORY_WIDGET_VERSION\\'\\, \\'(.+)\\'",
+			"type": "regex",
+			"to": "define( 'NS_CATEGORY_WIDGET_VERSION', '$npm_package_version'"
+		}
+	]
+}
