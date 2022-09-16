@@ -1,16 +1,17 @@
 {
   "name": "ns-category-widget",
-  "title": "NS Category Widget",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "license": "GPL-2.0+",
   "main_file": "ns-category-widget.php",
-  "repository": "github:ernilambar/ns-category-widget",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ernilambar/ns-category-widget"
+	},
   "scripts": {
-    "dev": "gulp",
     "preinstall": "npx only-allow pnpm",
     "version": "easy-replace-in-files",
     "prewpdeploy": "pnpm run deploy",
-    "wpdeploy": "grunt wpdeploy",
+    "wpdeploy": "wp-deployer",
     "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
     "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
     "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
@@ -18,15 +19,17 @@
   },
   "devDependencies": {
     "bestzip": "^2.2.1",
-    "browser-sync": "^2.27.10",
     "copy-files-from-to": "^3.2.2",
     "cross-var": "^1.1.0",
-    "dotenv": "^16.0.1",
     "easy-replace-in-files": "^1.0.2",
-    "grunt": "^1.5.3",
-    "grunt-wp-deploy": "^2.1.2",
-    "gulp": "^4.0.2",
     "node-wp-i18n": "^1.2.6",
-    "shx": "^0.3.4"
+    "shx": "^0.3.4",
+    "wp-deployer": "^1.0.3"
+  },
+  "wpDeployer": {
+    "repoType": "plugin",
+    "username": "rabmalin",
+    "buildDir": "deploy/ns-category-widget",
+    "deployAssets": false
   }
 }
