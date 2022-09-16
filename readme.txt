@@ -6,7 +6,7 @@ Tags: category, listing, widget, list, post, posts, sidebar, taxonomy, custom ta
 Requires at least: 4.9
 Requires PHP: 5.6
 Tested up to: 6.0
-Stable tag: 3.1.4
+Stable tag: 3.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 1. Adding widget in sidebar
 
 == Changelog ==
+
+= 3.1.5 - 21 Sep 2022 =
+* Minor bug fixes
 
 = 3.1.4 - 30 Jun 2022 =
 * Minor bug fixes
