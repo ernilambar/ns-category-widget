@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: NS Category Widget 3.1.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ns-category-widget\n"
-"POT-Creation-Date: 2022-09-25 07:27:59+00:00\n"
+"POT-Creation-Date: 2022-09-29 05:39:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,24 +18,28 @@ msgstr ""
 msgid "NS Category Widget"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:86
-#: admin/class-ns-category-widget-admin.php:174
+#: admin/class-ns-category-widget-admin.php:75
+msgid "Version: %s"
+msgstr ""
+
+#: admin/class-ns-category-widget-admin.php:102
+#: admin/class-ns-category-widget-admin.php:190
 msgid "Settings"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:96
+#: admin/class-ns-category-widget-admin.php:112
 msgid "Enable NS Category Widget"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:107
+#: admin/class-ns-category-widget-admin.php:123
 msgid "Enable Tree Script"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:118
+#: admin/class-ns-category-widget-admin.php:134
 msgid "Enable Tree Style"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:203 widgets/nscw-widget.php:222
+#: admin/class-ns-category-widget-admin.php:219 widgets/nscw-widget.php:222
 #: widgets/nscw-widget.php:232
 msgid "Show All"
 msgstr ""
