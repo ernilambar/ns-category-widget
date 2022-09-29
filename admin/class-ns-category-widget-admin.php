@@ -71,11 +71,27 @@ class NS_Category_Widget_Admin {
 
 		$obj->set_page(
 			array(
-				'page_title'  => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
-				'menu_title'  => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
-				'capability'  => 'manage_options',
-				'menu_slug'   => 'ns-category-widget',
-				'option_slug' => 'nscw_plugin_options',
+				'page_title'    => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
+				'page_subtitle' => sprintf( esc_html__( 'Version: %s', 'ns-category-widget' ), NS_CATEGORY_WIDGET_VERSION ),
+				'menu_title'    => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
+				'capability'    => 'manage_options',
+				'menu_slug'     => 'ns-category-widget',
+				'option_slug'   => 'nscw_plugin_options',
+			)
+		);
+
+		$obj->set_quick_links(
+			array(
+				array(
+					'text' => 'Plugin Page',
+					'url'  => 'https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html',
+					'type' => 'primary',
+				),
+				array(
+					'text' => 'Get Support',
+					'url'  => 'https://wordpress.org/support/plugin/ns-category-widget/#new-post',
+					'type' => 'secondary',
+				),
 			)
 		);
 
