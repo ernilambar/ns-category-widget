@@ -47,7 +47,7 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 
 == Changelog ==
 
-= 3.1.5 - 26 Sep 2022 =
+= 3.1.5 - 10 Oct 2022 =
 * Minor bug fixes
 
 = 3.1.4 - 30 Jun 2022 =

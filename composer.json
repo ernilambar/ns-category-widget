@@ -8,11 +8,12 @@
     {
       "name": "Nilambar Sharma",
       "email": "nilambar@outlook.com",
-      "homepage": "https://www.nilambar.net",
+      "homepage": "https://www.nilambar.net/",
       "role": "Developer"
     }
   ],
   "require": {
+		"php": ">=5.6",
     "ernilambar/optioner": "^2.0",
     "ernilambar/wp-admin-notice": "^1.0"
   }

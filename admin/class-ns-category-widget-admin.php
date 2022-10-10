@@ -187,7 +187,7 @@ class NS_Category_Widget_Admin {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . __( 'Settings', 'ns-category-widget' ) . '</a>',
+				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . esc_html__( 'Settings', 'ns-category-widget' ) . '</a>',
 			),
 			$links
 		);
