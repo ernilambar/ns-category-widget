@@ -19,10 +19,10 @@
   },
   "devDependencies": {
     "bestzip": "^2.2.1",
-    "copy-files-from-to": "^3.2.2",
+    "copy-files-from-to": "^3.8.0",
     "cross-var": "^1.1.0",
     "easy-replace-in-files": "^1.0.3",
-    "node-wp-i18n": "^1.2.6",
+    "node-wp-i18n": "^1.2.7",
     "shx": "^0.3.4",
     "wp-deployer": "^1.0.3"
   },
