@@ -1,6 +1,6 @@
 {
   "name": "ns-category-widget",
-  "version": "3.1.6",
+  "version": "3.1.7",
   "license": "GPL-2.0+",
   "main_file": "ns-category-widget.php",
   "repository": {
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "bestzip": "^2.2.1",
-    "copy-files-from-to": "^3.8.0",
+    "copy-files-from-to": "^3.9.0",
     "cross-var": "^1.1.0",
     "easy-replace-in-files": "^1.0.3",
     "node-wp-i18n": "^1.2.7",
