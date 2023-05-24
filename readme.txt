@@ -6,7 +6,7 @@ Tags: category, listing, widget, list, post, posts, sidebar, taxonomy, custom ta
 Requires at least: 4.9
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 3.1.6
+Stable tag: 3.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,7 @@ Are you frustrated by the lack of customization options in default Category widg
 1. Place the 'NS Category Widget' into a Widget area through the 'Appearance -> Widgets' menu in WordPress.
 
 == Frequently Asked Questions ==
+
 = Is only Category is supported in listing? =
 You can list Category as well as Custom Taxonomy also.
 
@@ -46,6 +47,9 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 1. Adding widget in sidebar
 
 == Changelog ==
+
+= 3.1.7 - 24 May 2023 =
+* Update Admin Notice package
 
 = 3.1.6 - 19 Feb 2023 =
 * Fix PHP 8 issue
