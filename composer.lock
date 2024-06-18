@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91369a5e23b385d1a7b68ef3e59e92d8",
+    "content-hash": "7bacbe2776adb91dcfbfb78b122f04b4",
     "packages": [
         {
             "name": "ernilambar/optioner",
-            "version": "2.0.9",
+            "version": "2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/optioner.git",
-                "reference": "b7ef22ac76b49afd6c2229451ff5909f794463f5"
+                "reference": "8b4158a570ef193c522e2fcbcbe307a35ca4503d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/b7ef22ac76b49afd6c2229451ff5909f794463f5",
-                "reference": "b7ef22ac76b49afd6c2229451ff5909f794463f5",
+                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/8b4158a570ef193c522e2fcbcbe307a35ca4503d",
+                "reference": "8b4158a570ef193c522e2fcbcbe307a35ca4503d",
                 "shasum": ""
             },
             "require": {
@@ -36,7 +36,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Minimal option framework for WordPress plugins",
+            "description": "Minimal option framework for WordPress.",
             "homepage": "https://github.com/ernilambar/optioner",
             "keywords": [
                 "option",
@@ -44,22 +44,22 @@
             ],
             "support": {
                 "issues": "https://github.com/ernilambar/optioner/issues",
-                "source": "https://github.com/ernilambar/optioner/tree/2.0.9"
+                "source": "https://github.com/ernilambar/optioner/tree/2.0.10"
             },
-            "time": "2023-04-30T09:04:01+00:00"
+            "time": "2024-06-18T09:46:28+00:00"
         },
         {
             "name": "ernilambar/wp-admin-notice",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/wp-admin-notice.git",
-                "reference": "99d73f74a17357a60abff104be06e5c07ec72f7f"
+                "reference": "626e4685775bdd06085e7af76f9ae9380c68c9f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/wp-admin-notice/zipball/99d73f74a17357a60abff104be06e5c07ec72f7f",
-                "reference": "99d73f74a17357a60abff104be06e5c07ec72f7f",
+                "url": "https://api.github.com/repos/ernilambar/wp-admin-notice/zipball/626e4685775bdd06085e7af76f9ae9380c68c9f0",
+                "reference": "626e4685775bdd06085e7af76f9ae9380c68c9f0",
                 "shasum": ""
             },
             "require": {
@@ -91,20 +91,20 @@
             ],
             "support": {
                 "issues": "https://github.com/ernilambar/wp-admin-notice/issues/",
-                "source": "https://github.com/ernilambar/wp-admin-notice/tree/1.0.1"
+                "source": "https://github.com/ernilambar/wp-admin-notice/tree/1.0.2"
             },
-            "time": "2023-05-23T10:16:06+00:00"
+            "time": "2023-05-29T05:53:39+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.6"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

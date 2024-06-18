@@ -1,28 +1,40 @@
 {
   "name": "ns-category-widget",
-  "version": "3.1.7",
-  "license": "GPL-2.0+",
-  "main_file": "ns-category-widget.php",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ernilambar/ns-category-widget"
+  "version": "3.2.0",
+	"description": "NS Category Widget",
+  "author": "Nilambar Sharma",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"wordpress-plugin"
+	],
+	"homepage": "https://github.com/ernilambar/ns-category-widget",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ernilambar/ns-category-widget"
+	},
+	"bugs": {
+		"url": "https://github.com/ernilambar/ns-category-widget/issues"
+	},
+  "packtor": {
+    "files": [
+      "**/*",
+      "!*.js",
+      "!*.json",
+      "!*.lock",
+      "!*.yaml"
+    ]
   },
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "version": "easy-replace-in-files",
-    "prewpdeploy": "pnpm run deploy",
-    "wpdeploy": "wp-deployer",
-    "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
-    "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
-    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
-    "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
+  "browserslist": "> 1%, not dead",
+  "npmpackagejsonlint": {
+    "extends": "@wordpress/npm-package-json-lint-config"
   },
   "devDependencies": {
-    "bestzip": "^2.2.1",
-    "copy-files-from-to": "^3.9.0",
-    "cross-var": "^1.1.0",
+    "@wordpress/npm-package-json-lint-config": "^5.1.0",
     "easy-replace-in-files": "^1.0.3",
     "node-wp-i18n": "^1.2.7",
+    "npm-package-json-lint": "^8.0.0",
+    "packtor": "^1.0.2",
     "shx": "^0.3.4",
     "wp-deployer": "^1.0.3"
   },
@@ -31,5 +43,15 @@
     "username": "rabmalin",
     "buildDir": "deploy/ns-category-widget",
     "deployAssets": false
+  },
+	"scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "version": "easy-replace-in-files",
+    "pot": "wpi18n makepot --exclude=vendor,deploy,node_modules",
+    "lint-pkg-json": "npmPkgJsonLint .",
+    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
+    "wpdeploy": "wp-deployer",
+    "prewpdeploy": "pnpm run deploy",
+    "deploy": "packtor"
   }
 }

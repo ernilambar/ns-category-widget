@@ -24,6 +24,15 @@ class NS_Category_Widget_Admin {
 	protected static $instance = null;
 
 	/**
+	 * Plugin slug.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	protected $plugin_slug = '';
+
+	/**
 	 * Plugin options.
 	 *
 	 * @since 1.0.0
