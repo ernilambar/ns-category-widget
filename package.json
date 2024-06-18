@@ -1,28 +1,29 @@
 {
   "name": "ns-category-widget",
   "version": "3.2.0",
-	"description": "NS Category Widget",
+  "description": "NS Category Widget",
   "author": "Nilambar Sharma",
-	"license": "GPL-2.0-or-later",
-	"keywords": [
-		"wordpress",
-		"wordpress-plugin"
-	],
-	"homepage": "https://github.com/ernilambar/ns-category-widget",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ernilambar/ns-category-widget"
-	},
-	"bugs": {
-		"url": "https://github.com/ernilambar/ns-category-widget/issues"
-	},
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "wordpress-plugin"
+  ],
+  "homepage": "https://github.com/ernilambar/ns-category-widget",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ernilambar/ns-category-widget"
+  },
+  "bugs": {
+    "url": "https://github.com/ernilambar/ns-category-widget/issues"
+  },
   "packtor": {
     "files": [
       "**/*",
       "!*.js",
       "!*.json",
       "!*.lock",
-      "!*.yaml"
+      "!*.yaml",
+      "!devtools/**/*"
     ]
   },
   "browserslist": "> 1%, not dead",
@@ -32,7 +33,6 @@
   "devDependencies": {
     "@wordpress/npm-package-json-lint-config": "^5.1.0",
     "easy-replace-in-files": "^1.0.3",
-    "node-wp-i18n": "^1.2.7",
     "npm-package-json-lint": "^8.0.0",
     "packtor": "^1.0.2",
     "shx": "^0.3.4",
@@ -44,10 +44,9 @@
     "buildDir": "deploy/ns-category-widget",
     "deployAssets": false
   },
-	"scripts": {
-    "preinstall": "npx only-allow pnpm",
+  "scripts": {
     "version": "easy-replace-in-files",
-    "pot": "wpi18n makepot --exclude=vendor,deploy,node_modules",
+    "pot": "composer run-script pot",
     "lint-pkg-json": "npmPkgJsonLint .",
     "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
     "wpdeploy": "wp-deployer",

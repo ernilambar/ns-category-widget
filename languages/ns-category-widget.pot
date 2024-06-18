@@ -3,49 +3,76 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NS Category Widget 3.2.0\n"
-"Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/ns-category-widget\n"
-"POT-Creation-Date: 2024-06-18 11:44:01+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ns-category-widget\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: node-wp-i18n 1.2.7\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0-alpha-2c86953\n"
+"X-Domain: ns-category-widget\n"
 
-#. Plugin Name of the plugin/theme
+#. Plugin Name of the plugin
+#: ns-category-widget.php
+#: admin/class-ns-category-widget-admin.php:83
+#: admin/class-ns-category-widget-admin.php:86
+#: admin/class-ns-category-widget-admin.php:331
+#: widgets/nscw-widget.php:12
 msgid "NS Category Widget"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:75
+#. Plugin URI of the plugin
+#: ns-category-widget.php
+msgid "https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html"
+msgstr ""
+
+#. Description of the plugin
+#: ns-category-widget.php
+msgid "A widget plugin for listing categories and taxonomies in the way you want."
+msgstr ""
+
+#. Author of the plugin
+#: ns-category-widget.php
+msgid "Nilambar Sharma"
+msgstr ""
+
+#. Author URI of the plugin
+#: ns-category-widget.php
+msgid "https://www.nilambar.net"
+msgstr ""
+
+#. translators: %s: Version.
+#: admin/class-ns-category-widget-admin.php:85
 msgid "Version: %s"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:102
-#: admin/class-ns-category-widget-admin.php:190
+#: admin/class-ns-category-widget-admin.php:112
+#: admin/class-ns-category-widget-admin.php:200
 msgid "Settings"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:112
+#: admin/class-ns-category-widget-admin.php:122
 msgid "Enable NS Category Widget"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:123
+#: admin/class-ns-category-widget-admin.php:133
 msgid "Enable Tree Script"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:134
+#: admin/class-ns-category-widget-admin.php:144
 msgid "Enable Tree Style"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:219 widgets/nscw-widget.php:222
+#: admin/class-ns-category-widget-admin.php:229
+#: widgets/nscw-widget.php:222
 #: widgets/nscw-widget.php:232
 msgid "Show All"
 msgstr ""
 
-#: ns-category-widget.php:150
 #. translators: %s: Category name.
+#: ns-category-widget.php:150
 msgid "Feed for all posts filed under %s"
 msgstr ""
 
@@ -125,7 +152,8 @@ msgstr ""
 msgid "Include category:"
 msgstr ""
 
-#: widgets/nscw-widget.php:290 widgets/nscw-widget.php:298
+#: widgets/nscw-widget.php:290
+#: widgets/nscw-widget.php:298
 msgid "Category IDs, separated by commas."
 msgstr ""
 
@@ -155,20 +183,4 @@ msgstr ""
 
 #: widgets/nscw-widget.php:324
 msgid "Save Tree State"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "A widget plugin for listing categories and taxonomies in the way you want."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "Nilambar Sharma"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://www.nilambar.net"
 msgstr ""

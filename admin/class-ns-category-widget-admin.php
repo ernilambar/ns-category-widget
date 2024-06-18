@@ -81,6 +81,7 @@ class NS_Category_Widget_Admin {
 		$obj->set_page(
 			array(
 				'page_title'    => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
+				/* translators: %s: Version. */
 				'page_subtitle' => sprintf( esc_html__( 'Version: %s', 'ns-category-widget' ), NS_CATEGORY_WIDGET_VERSION ),
 				'menu_title'    => esc_html__( 'NS Category Widget', 'ns-category-widget' ),
 				'capability'    => 'manage_options',
