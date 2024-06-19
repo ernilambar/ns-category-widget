@@ -1,56 +1,70 @@
 {
-  "name": "ns-category-widget",
-  "version": "3.2.0",
-  "description": "NS Category Widget",
-  "author": "Nilambar Sharma",
-  "license": "GPL-2.0-or-later",
-  "keywords": [
-    "wordpress",
-    "wordpress-plugin"
-  ],
-  "homepage": "https://github.com/ernilambar/ns-category-widget",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ernilambar/ns-category-widget"
-  },
-  "bugs": {
-    "url": "https://github.com/ernilambar/ns-category-widget/issues"
-  },
-  "packtor": {
-    "files": [
-      "**/*",
-      "!*.js",
-      "!*.json",
-      "!*.lock",
-      "!*.yaml",
-      "!devtools/**/*"
-    ]
-  },
-  "browserslist": "> 1%, not dead",
-  "npmpackagejsonlint": {
-    "extends": "@wordpress/npm-package-json-lint-config"
-  },
-  "devDependencies": {
-    "@wordpress/npm-package-json-lint-config": "^5.1.0",
-    "easy-replace-in-files": "^1.0.3",
-    "npm-package-json-lint": "^8.0.0",
-    "packtor": "^1.0.2",
-    "shx": "^0.3.4",
-    "wp-deployer": "^1.0.3"
-  },
-  "wpDeployer": {
-    "repoType": "plugin",
-    "username": "rabmalin",
-    "buildDir": "deploy/ns-category-widget",
-    "deployAssets": false
-  },
-  "scripts": {
-    "version": "easy-replace-in-files",
-    "pot": "composer run-script pot",
-    "lint-pkg-json": "npmPkgJsonLint .",
-    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
-    "wpdeploy": "wp-deployer",
-    "prewpdeploy": "pnpm run deploy",
-    "deploy": "packtor"
-  }
+	"name": "ns-category-widget",
+	"version": "3.2.0",
+	"description": "NS Category Widget",
+	"author": "Nilambar Sharma",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"wordpress-plugin"
+	],
+	"homepage": "https://github.com/ernilambar/ns-category-widget",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ernilambar/ns-category-widget"
+	},
+	"bugs": {
+		"url": "https://github.com/ernilambar/ns-category-widget/issues"
+	},
+	"packtor": {
+		"files": [
+			"**/*",
+			"!*.js",
+			"!*.json",
+			"!*.lock",
+			"!*.yaml",
+			"!devtools/**/*",
+			"!src/**/*"
+		]
+	},
+	"browserslist": "> 1%, not dead",
+	"npmpackagejsonlint": {
+		"extends": "@wordpress/npm-package-json-lint-config"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.24.7",
+		"@babel/core": "^7.24.7",
+		"@babel/preset-env": "^7.24.7",
+		"@wordpress/npm-package-json-lint-config": "^5.1.0",
+		"@wordpress/prettier-config": "^4.1.0",
+		"babel-loader": "^9.1.3",
+		"easy-replace-in-files": "^1.0.3",
+		"npm-package-json-lint": "^8.0.0",
+		"packtor": "^1.0.2",
+		"prettier": "npm:wp-prettier@^3.0.3",
+		"shx": "^0.3.4",
+		"webpack": "^5.91.0",
+		"webpack-cli": "^5.1.4",
+		"wp-deployer": "^1.0.3"
+	},
+	"wpDeployer": {
+		"repoType": "plugin",
+		"username": "rabmalin",
+		"buildDir": "deploy/ns-category-widget",
+		"deployAssets": false
+	},
+	"scripts": {
+		"dev": "webpack --watch",
+		"build": "webpack --mode=production --no-devtool",
+		"format": "prettier --write \"src/**/*.{js,scss}\" webpack.config.js *.json",
+		"version": "easy-replace-in-files",
+		"pot": "composer run-script pot",
+		"lint-pkg-json": "npmPkgJsonLint .",
+		"ready:assets": "shx rm -rf build/ && pnpm run build",
+		"ready:vendor": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
+		"prewpdeploy": "pnpm run deploy",
+		"wpdeploy": "wp-deployer",
+		"predeploy": "pnpm run ready:assets && pnpm run ready:vendor",
+		"deploy": "packtor"
+	}
 }

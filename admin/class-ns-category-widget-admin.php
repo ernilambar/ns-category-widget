@@ -190,7 +190,7 @@ class NS_Category_Widget_Admin {
 			return;
 		}
 
-		wp_enqueue_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION, true );
+		wp_enqueue_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/build/widget.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION, true );
 		wp_localize_script( 'nscw-widget-script', 'ns_category_widget_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
 
