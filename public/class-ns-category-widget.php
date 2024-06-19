@@ -46,7 +46,7 @@ class NS_Category_Widget {
 	 *
 	 * @var array
 	 */
-	protected static $default_options = null ;
+	protected static $default_options = null;
 
 	/**
 	 * Plugin options.
@@ -80,10 +80,10 @@ class NS_Category_Widget {
 		// Activate plugin when new blog is added.
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
-		self :: $default_options = array(
-				'nscw_field_enable_ns_category_widget' => true,
-				'nscw_field_enable_tree_script'        => true,
-				'nscw_field_enable_tree_style'         => true,
+		self::$default_options = array(
+			'nscw_field_enable_ns_category_widget' => true,
+			'nscw_field_enable_tree_script'        => true,
+			'nscw_field_enable_tree_style'         => true,
 		);
 		// Set Default options of the plugin.
 		$this->_setDefaultOptions();
@@ -94,7 +94,6 @@ class NS_Category_Widget {
 		// Load public-facing style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
 	}
 
 	/**
@@ -119,7 +118,7 @@ class NS_Category_Widget {
 
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -138,14 +137,12 @@ class NS_Category_Widget {
 	public static function activate( $network_wide ) {
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
-			if ( $network_wide  ) {
+			if ( $network_wide ) {
 
 				// Get all blog ids.
 				$blog_ids = self::get_blog_ids();
 
 				foreach ( $blog_ids as $blog_id ) {
-
 					switch_to_blog( $blog_id );
 					self::single_activate();
 
@@ -157,7 +154,6 @@ class NS_Category_Widget {
 		} else {
 			self::single_activate();
 		}
-
 	}
 
 	/**
@@ -173,19 +169,16 @@ class NS_Category_Widget {
 	public static function deactivate( $network_wide ) {
 
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
 			if ( $network_wide ) {
 
 				// Get all blog ids.
 				$blog_ids = self::get_blog_ids();
 
 				foreach ( $blog_ids as $blog_id ) {
-
 					switch_to_blog( $blog_id );
 					self::single_deactivate();
 
 					restore_current_blog();
-
 				}
 			} else {
 				self::single_deactivate();
@@ -193,7 +186,6 @@ class NS_Category_Widget {
 		} else {
 			self::single_deactivate();
 		}
-
 	}
 
 	/**
@@ -212,30 +204,21 @@ class NS_Category_Widget {
 		switch_to_blog( $blog_id );
 		self::single_activate();
 		restore_current_blog();
-
 	}
 
 	/**
-	 * Get all blog ids of blogs in the current network that are:
-	 * - not archived
-	 * - not spam
-	 * - not deleted
+	 * Get all active blog ids.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array|false The blog ids, false if no matches.
+	 * @return array The blog ids.
 	 */
 	private static function get_blog_ids() {
-
-		global $wpdb;
-
-		// Get an array of blog ids.
-		$sql = "SELECT blog_id FROM $wpdb->blogs
-			WHERE archived = '0' AND spam = '0'
-			AND deleted = '0'";
-
-		return $wpdb->get_col( $sql );
-
+		return (array) get_sites(
+			array(
+				'fields' => 'ids',
+			)
+		);
 	}
 
 	/**
@@ -245,8 +228,7 @@ class NS_Category_Widget {
 	 */
 	private static function single_activate() {
 
-		update_option( self :: $plugin_option_name, self :: $default_options );
-
+		update_option( self::$plugin_option_name, self::$default_options );
 	}
 
 	/**
@@ -266,7 +248,6 @@ class NS_Category_Widget {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain( $this->plugin_slug );
-
 	}
 
 	/**
@@ -279,7 +260,6 @@ class NS_Category_Widget {
 		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_tree_style'] ) ) {
 			wp_enqueue_style( $this->plugin_slug . '-tree-style', plugins_url( 'assets/css/themes/default/style.css', __FILE__ ), array(), self::VERSION );
 		}
-
 	}
 
 	/**
@@ -329,9 +309,8 @@ class NS_Category_Widget {
 	 */
 	private function _getCurrentOptions() {
 
-		$options = array_merge( self :: $default_options , (array) get_option( self :: $plugin_option_name, array() ) );
-	    $this->options = $options;
-
+		$options       = array_merge( self::$default_options, (array) get_option( self::$plugin_option_name, array() ) );
+		$this->options = $options;
 	}
 
 	/**
@@ -341,9 +320,8 @@ class NS_Category_Widget {
 	 */
 	private function _setDefaultOptions() {
 
-		if ( ! get_option( self :: $plugin_option_name ) ) {
-			update_option( self :: $plugin_option_name, self :: $default_options );
+		if ( ! get_option( self::$plugin_option_name ) ) {
+			update_option( self::$plugin_option_name, self::$default_options );
 		}
-
 	}
 }
