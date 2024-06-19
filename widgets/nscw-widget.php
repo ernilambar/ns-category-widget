@@ -1,9 +1,23 @@
 <?php
+/**
+ * Category widget
+ *
+ * @package NS_Category_Widget
+ */
 
+/**
+ * Category widget class.
+ *
+ * @since 1.0.0
+ */
 class NSCW_Widget extends WP_Widget {
 
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.0.0
+	 */
 	public function __construct() {
-
 		$widget_ops = array(
 			'classname'   => 'widget_ns_category_widget',
 			'description' => esc_html__( 'Widget for displaying categories in your way', 'ns-category-widget' ),
@@ -12,6 +26,14 @@ class NSCW_Widget extends WP_Widget {
 		parent::__construct( 'ns-category-widget', esc_html__( 'NS Category Widget', 'ns-category-widget' ), $widget_ops );
 	}
 
+	/**
+	 * Echo the widget content.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $args     Display arguments.
+	 * @param array $instance Widget instance.
+	 */
 	public function widget( $args, $instance ) {
 
 		extract( $args );
@@ -38,10 +60,10 @@ class NSCW_Widget extends WP_Widget {
 		$tree_show_dots  = $instance['tree_show_dots'];
 		$tree_save_state = $instance['tree_save_state'];
 
-		echo $args['before_widget'];
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . $title . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		$cat_args = array(
@@ -68,7 +90,7 @@ class NSCW_Widget extends WP_Widget {
 			$class_text = 'nscw-active-tree';
 		}
 
-		echo '<div class="' . $class_text . '">';
+		echo '<div class="' . esc_attr( $class_text ) . '">';
 		echo '<ul class="cat-list">';
 		wp_list_categories( apply_filters( 'widget_categories_args', $cat_args ) );
 		echo '</ul>';
@@ -90,7 +112,7 @@ class NSCW_Widget extends WP_Widget {
 
 				$(function () {
 
-			$('#<?php echo $widget_id; ?> div').jstree({
+			$('#<?php echo esc_attr( $widget_id ); ?> div').jstree({
 				'plugins':[<?php echo '"' . implode( '","', $tree_plugins ) . '"'; ?>],
 				'core' : {
 				'themes' : {
@@ -100,7 +122,7 @@ class NSCW_Widget extends WP_Widget {
 				}
 			});
 			//
-			$('body').on('click','#<?php echo $widget_id; ?> div a', function(e){
+			$('body').on('click','#<?php echo esc_attr( $widget_id ); ?> div a', function(e){
 				window.location = $(this).attr('href');
 			});
 			});
@@ -111,9 +133,18 @@ class NSCW_Widget extends WP_Widget {
 			<?php
 		} // End if.
 
-		echo $args['after_widget'];
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
+	/**
+	 * Update widget instance.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $new_instance New settings for this instance.
+	 * @param array $old_instance Old settings for this instance.
+	 * @return array Settings to save or bool false to cancel saving.
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 
@@ -146,7 +177,14 @@ class NSCW_Widget extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	/**
+	 * Output the settings update form.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $instance Current settings.
+	 */
+	public function form( $instance ) {
 		global $wp_taxonomies;
 
 		$instance = wp_parse_args(
@@ -182,29 +220,29 @@ class NSCW_Widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
 			<?php esc_html_e( 'Title:', 'ns-category-widget' ); ?>
 			</label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-			name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo $title; ?>" />
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+			name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>">
 			<?php esc_html_e( 'Taxonomy:', 'ns-category-widget' ); ?>
 			</label>
-			<select id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>" class="nscw-taxonomy" data-name="<?php echo esc_attr( $this->get_field_name( 'parent_category' ) ); ?>" data-id="<?php echo $this->get_field_id( 'parent_category' ); ?>" >
+			<select id="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>" class="nscw-taxonomy" data-name="<?php echo esc_attr( $this->get_field_name( 'parent_category' ) ); ?>" data-id="<?php echo esc_attr( $this->get_field_id( 'parent_category' ) ); ?>" >
 				<?php
 				foreach ( $wp_taxonomies as $taxonomy_item ) {
 					if ( false === in_array( $taxonomy_item->name, array( 'post_format', 'link_category', 'nav_menu' ), true ) ) {
-						echo '<option ' . selected( $taxonomy, $taxonomy_item->name, false ) . ' value="' . $taxonomy_item->name . '">' . $taxonomy_item->label . '</option>';
+						echo '<option ' . selected( $taxonomy, $taxonomy_item->name, false ) . ' value="' . esc_attr( $taxonomy_item->name ) . '">' . esc_html( $taxonomy_item->label ) . '</option>';
 					}
 				}
 				?>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'parent_category' ); ?>">
-			<?php _e( 'Parent Category:', 'ns-category-widget' ); ?>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'parent_category' ) ); ?>">
+			<?php esc_html_e( 'Parent Category:', 'ns-category-widget' ); ?>
 			</label>
 			<?php
 			$cat_args = array(
@@ -221,11 +259,11 @@ class NSCW_Widget extends WP_Widget {
 			?>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'depth' ); ?>">
-			<?php _e( 'Depth:', 'ns-category-widget' ); ?>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'depth' ) ); ?>">
+			<?php esc_html_e( 'Depth:', 'ns-category-widget' ); ?>
 			</label>
-			<select name="<?php echo esc_attr( $this->get_field_name( 'depth' ) ); ?>" id="<?php echo $this->get_field_id( 'depth' ); ?>">
-			<option value="0" <?php selected( $depth, '0' ); ?>><?php _e( 'Show All', 'ns-category-widget' ); ?> </option>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'depth' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'depth' ) ); ?>">
+			<option value="0" <?php selected( $depth, '0' ); ?>><?php esc_html_e( 'Show All', 'ns-category-widget' ); ?> </option>
 			<option value="1" <?php selected( $depth, '1' ); ?>>1</option>
 			<option value="2" <?php selected( $depth, '2' ); ?>>2</option>
 			<option value="3" <?php selected( $depth, '3' ); ?>>3</option>
@@ -239,10 +277,10 @@ class NSCW_Widget extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>">
-			<?php _e( 'Sort By:', 'ns-category-widget' ); ?>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>">
+			<?php esc_html_e( 'Sort By:', 'ns-category-widget' ); ?>
 			</label>
-			<select name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" id="<?php echo $this->get_field_id( 'orderby' ); ?>">
+			<select name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>">
 			<option value="ID" <?php selected( $orderby, 'ID' ); ?>><?php esc_html_e( 'ID', 'ns-category-widget' ); ?></option>
 			<option value="name" <?php selected( $orderby, 'name' ); ?>><?php esc_html_e( 'Name', 'ns-category-widget' ); ?></option>
 			<option value="slug" <?php selected( $orderby, 'slug' ); ?>><?php esc_html_e( 'Slug', 'ns-category-widget' ); ?></option>
@@ -250,73 +288,72 @@ class NSCW_Widget extends WP_Widget {
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>">
 			<?php esc_html_e( 'Sort Order:', 'ns-category-widget' ); ?>
 			</label>
-			<select name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" id="<?php echo $this->get_field_id( 'order' ); ?>">
+			<select name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>">
 			<option value="asc" <?php selected( $order, 'asc' ); ?>><?php esc_html_e( 'Ascending', 'ns-category-widget' ); ?></option>
 			<option value="desc" <?php selected( $order, 'desc' ); ?>><?php esc_html_e( 'Descending', 'ns-category-widget' ); ?></option>
 			</select>
 		</p>
 		<p>
-			<input id="<?php echo $this->get_field_id( 'hide_empty' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hide_empty' ) ); ?>" type="checkbox" <?php checked( isset( $instance['hide_empty'] ) ? $instance['hide_empty'] : 0 ); ?> />
-			<label for="<?php echo $this->get_field_id( 'hide_empty' ); ?>">
+			<input id="<?php echo esc_attr( $this->get_field_id( 'hide_empty' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hide_empty' ) ); ?>" type="checkbox" <?php checked( isset( $instance['hide_empty'] ) ? $instance['hide_empty'] : 0 ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'hide_empty' ) ); ?>">
 			<?php esc_html_e( 'Hide Empty', 'ns-category-widget' ); ?>
 			</label>
 		</p>
 		<p>
-			<input id="<?php echo $this->get_field_id( 'show_post_count' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_post_count' ) ); ?>" type="checkbox" <?php checked( isset( $instance['show_post_count'] ) ? $instance['show_post_count'] : 0 ); ?> />
-			<label for="<?php echo $this->get_field_id( 'show_post_count' ); ?>">
+			<input id="<?php echo esc_attr( $this->get_field_id( 'show_post_count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'show_post_count' ) ); ?>" type="checkbox" <?php checked( isset( $instance['show_post_count'] ) ? $instance['show_post_count'] : 0 ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_post_count' ) ); ?>">
 			<?php esc_html_e( 'Show Post Count', 'ns-category-widget' ); ?>
 			</label>
-
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>">
 			<?php esc_html_e( 'Limit:', 'ns-category-widget' ); ?>
-			<input class="" type="number" min="0" id="<?php echo $this->get_field_id( 'number' ); ?>"
-			name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo $number; ?>" size="3"/>&nbsp;<small><?php esc_html_e( 'Enter limit in number', 'ns-category-widget' ); ?></small>
+			<input type="number" min="0" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"
+			name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" size="3"/>&nbsp;<small><?php esc_html_e( 'Enter limit in number', 'ns-category-widget' ); ?></small>
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'include_category' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'include_category' ) ); ?>">
 			<?php esc_html_e( 'Include category:', 'ns-category-widget' ); ?>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'include_category' ); ?>"
-			name="<?php echo esc_attr( $this->get_field_name( 'include_category' ) ); ?>" type="text" value="<?php echo $include_category; ?>"/>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'include_category' ) ); ?>"
+			name="<?php echo esc_attr( $this->get_field_name( 'include_category' ) ); ?>" type="text" value="<?php echo esc_attr( $include_category ); ?>"/>
 			<small><?php esc_html_e( 'Category IDs, separated by commas.', 'ns-category-widget' ); ?>[<strong><?php esc_html_e( 'Only displays these categories', 'ns-category-widget' ); ?></strong>]</small>
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'exclude_category' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude_category' ) ); ?>">
 			<?php esc_html_e( 'Exclude category:', 'ns-category-widget' ); ?>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'exclude_category' ); ?>"
-			name="<?php echo esc_attr( $this->get_field_name( 'exclude_category' ) ); ?>" type="text" value="<?php echo $exclude_category; ?>"/>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'exclude_category' ) ); ?>"
+			name="<?php echo esc_attr( $this->get_field_name( 'exclude_category' ) ); ?>" type="text" value="<?php echo esc_attr( $exclude_category ); ?>"/>
 			<small><?php esc_html_e( 'Category IDs, separated by commas.', 'ns-category-widget' ); ?></small>
 			</label>
 		</p>
 		<p>
-			<input id="<?php echo $this->get_field_id( 'enable_tree' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'enable_tree' ) ); ?>" type="checkbox" <?php checked( isset( $instance['enable_tree'] ) ? $instance['enable_tree'] : 0 ); ?> />
-			<label for="<?php echo $this->get_field_id( 'enable_tree' ); ?>">
+			<input id="<?php echo esc_attr( $this->get_field_id( 'enable_tree' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'enable_tree' ) ); ?>" type="checkbox" <?php checked( isset( $instance['enable_tree'] ) ? $instance['enable_tree'] : 0 ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'enable_tree' ) ); ?>">
 			<?php esc_html_e( 'Enable Tree', 'ns-category-widget' ); ?>
 			</label>
 		</p>
 		<p><a href="#" class="btn-show-advanced-tree-settings"><?php esc_html_e( 'Advanced Tree settings', 'ns-category-widget' ); ?></a></p>
 		<div class="advanced-tree-settings-wrap" style="display:none;">
 			<p>
-			<input id="<?php echo $this->get_field_id( 'tree_show_icons' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tree_show_icons' ) ); ?>" type="checkbox" <?php checked( isset( $instance['tree_show_icons'] ) ? $instance['tree_show_icons'] : 0 ); ?> />
-			<label for="<?php echo $this->get_field_id( 'tree_show_icons' ); ?>">
+			<input id="<?php echo esc_attr( $this->get_field_id( 'tree_show_icons' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tree_show_icons' ) ); ?>" type="checkbox" <?php checked( isset( $instance['tree_show_icons'] ) ? $instance['tree_show_icons'] : 0 ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'tree_show_icons' ) ); ?>">
 				<?php esc_html_e( 'Show Tree Icons', 'ns-category-widget' ); ?>
 			</label>
 			</p>
 			<p>
-			<input id="<?php echo $this->get_field_id( 'tree_show_dots' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tree_show_dots' ) ); ?>" type="checkbox" <?php checked( isset( $instance['tree_show_dots'] ) ? $instance['tree_show_dots'] : 0 ); ?> />
-			<label for="<?php echo $this->get_field_id( 'tree_show_dots' ); ?>">
+			<input id="<?php echo esc_attr( $this->get_field_id( 'tree_show_dots' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tree_show_dots' ) ); ?>" type="checkbox" <?php checked( isset( $instance['tree_show_dots'] ) ? $instance['tree_show_dots'] : 0 ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'tree_show_dots' ) ); ?>">
 				<?php esc_html_e( 'Show Dots', 'ns-category-widget' ); ?>
 			</label>
 			</p>
 			<p>
-			<input id="<?php echo $this->get_field_id( 'tree_save_state' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tree_save_state' ) ); ?>" type="checkbox" <?php checked( isset( $instance['tree_save_state'] ) ? $instance['tree_save_state'] : 0 ); ?> />
-			<label for="<?php echo $this->get_field_id( 'tree_save_state' ); ?>">
+			<input id="<?php echo esc_attr( $this->get_field_id( 'tree_save_state' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tree_save_state' ) ); ?>" type="checkbox" <?php checked( isset( $instance['tree_save_state'] ) ? $instance['tree_save_state'] : 0 ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'tree_save_state' ) ); ?>">
 				<?php esc_html_e( 'Save Tree State', 'ns-category-widget' ); ?>
 			</label>
 			</p>
