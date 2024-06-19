@@ -21,7 +21,6 @@
   <exclude-pattern>*/phpunit.xml*</exclude-pattern>
   <exclude-pattern>*lib/*</exclude-pattern>
   <exclude-pattern>*admin/*</exclude-pattern>
-  <exclude-pattern>*public/*</exclude-pattern>
   <exclude-pattern>*\.(css|js)</exclude-pattern>
   <exclude-pattern>*/widgets/nscw-widget.php</exclude-pattern>
 
