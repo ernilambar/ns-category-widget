@@ -35,30 +35,28 @@ class NSCW_Widget extends WP_Widget {
 	 * @param array $instance Widget instance.
 	 */
 	public function widget( $args, $instance ) {
-
-		extract( $args );
-
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		$taxonomy         = $instance['taxonomy'];
-		$parent_category  = $instance['parent_category'];
-		$depth            = $instance['depth'];
-		$orderby          = $instance['orderby'];
-		$order            = $instance['order'];
-		$hide_empty       = $instance['hide_empty'];
-		$show_post_count  = $instance['show_post_count'];
-		$number           = $instance['number'];
-		$include_category = $instance['include_category'];
-		$exclude_category = $instance['exclude_category'];
+		$widget_id = $args['widget_id'];
+
+		$taxonomy         = ! empty( $instance['taxonomy'] ) ? $instance['taxonomy'] : 'category';
+		$parent_category  = ! empty( $instance['parent_category'] ) ? $instance['parent_category'] : 0;
+		$depth            = ! empty( $instance['depth'] ) ? $instance['depth'] : 0;
+		$orderby          = ! empty( $instance['orderby'] ) ? $instance['orderby'] : 'name';
+		$order            = ! empty( $instance['order'] ) ? $instance['order'] : 'asc';
+		$hide_empty       = ! empty( $instance['hide_empty'] ) ? $instance['hide_empty'] : 0;
+		$show_post_count  = ! empty( $instance['show_post_count'] ) ? $instance['show_post_count'] : 0;
+		$number           = ! empty( $instance['number'] ) ? $instance['number'] : '';
+		$include_category = ! empty( $instance['include_category'] ) ? $instance['include_category'] : '';
+		$exclude_category = ! empty( $instance['exclude_category'] ) ? $instance['exclude_category'] : '';
+		$enable_tree      = ! empty( $instance['enable_tree'] ) ? $instance['enable_tree'] : 0;
+		$tree_show_icons  = ! empty( $instance['tree_show_icons'] ) ? $instance['tree_show_icons'] : 0;
+		$tree_show_dots   = ! empty( $instance['tree_show_dots'] ) ? $instance['tree_show_dots'] : 1;
+		$tree_save_state  = ! empty( $instance['tree_save_state'] ) ? $instance['tree_save_state'] : 1;
 
 		if ( ! empty( $exclude_category ) ) {
 			$include_category = '';
 		}
-
-		$enable_tree     = $instance['enable_tree'];
-		$tree_show_icons = $instance['tree_show_icons'];
-		$tree_show_dots  = $instance['tree_show_dots'];
-		$tree_save_state = $instance['tree_save_state'];
 
 		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
@@ -86,7 +84,7 @@ class NSCW_Widget extends WP_Widget {
 
 		$class_text = 'nscw-inactive-tree';
 
-		if ( 1 == $enable_tree ) {
+		if ( 1 === $enable_tree ) {
 			$class_text = 'nscw-active-tree';
 		}
 
@@ -100,9 +98,9 @@ class NSCW_Widget extends WP_Widget {
 
 		$nscw_field_enable_tree_script = $obj_nscw->get_option( 'nscw_field_enable_tree_script' );
 
-		if ( 1 == $enable_tree && 1 == $nscw_field_enable_tree_script ) {
+		if ( 1 === $enable_tree && true === $nscw_field_enable_tree_script ) {
 			$tree_plugins = array();
-			if ( 1 == $tree_save_state ) {
+			if ( 1 === $tree_save_state ) {
 				$tree_plugins[] = 'state';
 			}
 			?>
@@ -112,22 +110,22 @@ class NSCW_Widget extends WP_Widget {
 
 				$(function () {
 
-			$('#<?php echo esc_attr( $widget_id ); ?> div').jstree({
-				'plugins':[<?php echo '"' . implode( '","', $tree_plugins ) . '"'; ?>],
-				'core' : {
-				'themes' : {
-					'icons' : <?php echo ( 1 == $tree_show_icons ) ? 'true' : 'false'; ?>,
-					'dots' : <?php echo ( 1 == $tree_show_dots ) ? 'true' : 'false'; ?>
-				}
-				}
-			});
-			//
-			$('body').on('click','#<?php echo esc_attr( $widget_id ); ?> div a', function(e){
-				window.location = $(this).attr('href');
-			});
-			});
+					$('#<?php echo esc_attr( $widget_id ); ?> div').jstree({
+						'plugins':[<?php echo '"' . implode( '","', $tree_plugins ) . '"'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>],
+						'core' : {
+						'themes' : {
+							'icons' : <?php echo ( 1 === $tree_show_icons ) ? 'true' : 'false'; ?>,
+							'dots' : <?php echo ( 1 === $tree_show_dots ) ? 'true' : 'false'; ?>
+						}
+						}
+					});
+					//
+					$('body').on('click','#<?php echo esc_attr( $widget_id ); ?> div a', function(e){
+						window.location = $(this).attr('href');
+					});
+				});
 
-		}(jQuery));
+			}(jQuery));
 
 			</script>
 			<?php
@@ -233,7 +231,7 @@ class NSCW_Widget extends WP_Widget {
 			<select id="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>" class="nscw-taxonomy" data-name="<?php echo esc_attr( $this->get_field_name( 'parent_category' ) ); ?>" data-id="<?php echo esc_attr( $this->get_field_id( 'parent_category' ) ); ?>" >
 				<?php
 				foreach ( $wp_taxonomies as $taxonomy_item ) {
-					if ( false === in_array( $taxonomy_item->name, array( 'post_format', 'link_category', 'nav_menu' ), true ) ) {
+					if ( false === in_array( $taxonomy_item->name, array( 'post_format', 'link_category', 'nav_menu', 'wp_theme', 'wp_template_part_area', 'wp_pattern_category' ), true ) ) {
 						echo '<option ' . selected( $taxonomy, $taxonomy_item->name, false ) . ' value="' . esc_attr( $taxonomy_item->name ) . '">' . esc_html( $taxonomy_item->label ) . '</option>';
 					}
 				}

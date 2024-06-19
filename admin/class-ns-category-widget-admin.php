@@ -76,6 +76,11 @@ class NS_Category_Widget_Admin {
 		add_action( 'wp_ajax_nscw_nsbl_get_posts', array( $this, 'get_posts_ajax_callback' ) );
 	}
 
+	/**
+	 * Register options.
+	 *
+	 * @since 1.0.0
+	 */
 	public function register_options() {
 		$obj = new Optioner();
 
@@ -166,8 +171,7 @@ class NS_Category_Widget_Admin {
 	 * @return object A single instance of this class.
 	 */
 	public static function get_instance() {
-
-		if ( null == self::$instance ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
 
@@ -178,23 +182,27 @@ class NS_Category_Widget_Admin {
 	 * Enqueue widget scripts.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $hook Hook name.
 	 */
-	function nscw_scripts_enqueue( $hook ) {
+	public function nscw_scripts_enqueue( $hook ) {
 		if ( 'widgets.php' !== $hook ) {
 			return;
 		}
-		wp_register_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION );
+
+		wp_enqueue_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION, true );
 		wp_localize_script( 'nscw-widget-script', 'ns_category_widget_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-		wp_enqueue_script( 'nscw-widget-script' );
 	}
 
 	/**
-	 * Add settings action link to the plugins page.
+	 * Customize plugin action links.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param array $links Action links.
+	 * @return array Modified action links.
 	 */
 	public function add_action_links( $links ) {
-
 		return array_merge(
 			array(
 				'settings' => '<a href="' . esc_url( admin_url( 'options-general.php?page=' . $this->plugin_slug ) ) . '">' . esc_html__( 'Settings', 'ns-category-widget' ) . '</a>',
@@ -208,14 +216,14 @@ class NS_Category_Widget_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	function ajax_populate_categories() {
+	public function ajax_populate_categories() {
 		$output = array();
 
 		$output['status'] = 0;
 
-		$taxonomy = $_POST['taxonomy'];
-		$name     = $_POST['name'];
-		$id       = $_POST['id'];
+		$taxonomy = ( isset( $_POST['taxonomy'] ) && ! empty( $_POST['taxonomy'] ) ) ? sanitize_text_field( wp_unslash( $_POST['taxonomy'] ) ) : '';
+		$name     = ( isset( $_POST['name'] ) && ! empty( $_POST['name'] ) ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
+		$id       = ( isset( $_POST['id'] ) && ! empty( $_POST['id'] ) ) ? sanitize_text_field( wp_unslash( $_POST['id'] ) ) : '';
 
 		$cat_args = array(
 			'orderby'         => 'slug',
@@ -225,7 +233,7 @@ class NS_Category_Widget_Admin {
 			'name'            => $name,
 			'id'              => $id,
 			'class'           => 'nscw-cat-list',
-			'show_option_all' => __( 'Show All', 'ns-category-widget' ),
+			'show_option_all' => esc_html__( 'Show All', 'ns-category-widget' ),
 		);
 
 		$output['html'] = wp_dropdown_categories( apply_filters( 'widget_categories_dropdown_args', $cat_args ) );
@@ -236,12 +244,14 @@ class NS_Category_Widget_Admin {
 	}
 
 	/**
-	 * Render sidebar.
+	 * Render welcome sidebar.
 	 *
 	 * @since 3.1.1
+	 *
+	 * @param Welcome $welcome_object Instance of Welcome.
 	 */
-	public function render_sidebar( $object ) {
-		$object->render_sidebar_box(
+	public function render_sidebar( $welcome_object ) {
+		$welcome_object->render_sidebar_box(
 			array(
 				'title'   => 'Help &amp; Support',
 				'icon'    => 'dashicons-editor-help',
@@ -250,26 +260,33 @@ class NS_Category_Widget_Admin {
 				<h4>Wanna help make this plugin better?</h4>
 				<p><a href="https://wordpress.org/support/plugin/ns-category-widget/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></p>',
 			),
-			$object
+			$welcome_object
 		);
 
-		$object->render_sidebar_box(
+		$welcome_object->render_sidebar_box(
 			array(
 				'title'   => 'Recommended Plugins',
 				'content' => $this->get_recommended_plugins_content(),
 			),
-			$object
+			$welcome_object
 		);
 
-		$object->render_sidebar_box(
+		$welcome_object->render_sidebar_box(
 			array(
 				'title'   => 'Recent Blog Posts',
 				'content' => '<div class="ns-blog-list"></div>',
 			),
-			$object
+			$welcome_object
 		);
 	}
 
+	/**
+	 * Load settings assets.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $hook Hook name.
+	 */
 	public function load_settings_assets( $hook ) {
 		if ( 'settings_page_ns-category-widget' !== $hook ) {
 			return;
@@ -278,6 +295,11 @@ class NS_Category_Widget_Admin {
 		wp_enqueue_script( 'ns-category-widget-settings', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/settings.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION, true );
 	}
 
+	/**
+	 * AJAX callback for feed items.
+	 *
+	 * @since 1.0.0
+	 */
 	public function get_posts_ajax_callback() {
 		$output = array();
 
@@ -294,6 +316,13 @@ class NS_Category_Widget_Admin {
 		}
 	}
 
+	/**
+	 * Returns blog feed items.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array Feed items.
+	 */
 	public function get_blog_feed_items() {
 		$output = array();
 
@@ -322,8 +351,12 @@ class NS_Category_Widget_Admin {
 		return $output;
 	}
 
+	/**
+	 * Setup admin notice.
+	 *
+	 * @since 1.0.0
+	 */
 	public function setup_custom_notice() {
-		// Setup notice.
 		\Nilambar\AdminNotice\Notice::init(
 			array(
 				'slug' => NS_CATEGORY_WIDGET_SLUG,
@@ -332,6 +365,13 @@ class NS_Category_Widget_Admin {
 		);
 	}
 
+	/**
+	 * Returns recommended plugins markup.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string Markup.
+	 */
 	public function get_recommended_plugins_content() {
 		return '<ol>
 			<li><a href="https://wordpress.org/plugins/ns-featured-posts/" target="_blank">NS Featured Posts</a></li>

@@ -31,6 +31,7 @@ require_once NS_CATEGORY_WIDGET_DIR . '/vendor/ernilambar/optioner/optioner.php'
 
 // Public-Facing Functionality.
 require_once NS_CATEGORY_WIDGET_DIR . '/public/class-ns-category-widget.php';
+require_once NS_CATEGORY_WIDGET_DIR . '/public/class-nscw-walker.php';
 require_once NS_CATEGORY_WIDGET_DIR . '/widgets/nscw-widget.php';
 
 register_activation_hook( __FILE__, array( 'NS_Category_Widget', 'activate' ) );
