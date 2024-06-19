@@ -1,19 +1,19 @@
 <?php
 /**
- * NS Category Widget.
+ * NS Category Widget
  *
  * @package NS_Category_Widget
  */
 
 /**
- * NS Category Widget Class.
+ * NS Category Widget class.
  *
  * @since 1.0.0
  */
 class NS_Category_Widget {
 
 	/**
-	 * Plugin version, used for cache-busting of style and script file references.
+	 * Plugin version.
 	 *
 	 * @since 1.0.0
 	 *
@@ -67,13 +67,11 @@ class NS_Category_Widget {
 	protected static $instance = null;
 
 	/**
-	 * Initialize the plugin by setting localization and loading public scripts
-	 * and styles.
+	 * Initialize the plugin.
 	 *
 	 * @since 1.0.0
 	 */
 	private function __construct() {
-
 		// Load plugin text domain.
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
@@ -85,11 +83,12 @@ class NS_Category_Widget {
 			'nscw_field_enable_tree_script'        => true,
 			'nscw_field_enable_tree_style'         => true,
 		);
+
 		// Set Default options of the plugin.
-		$this->_setDefaultOptions();
+		$this->set_default_options();
 
 		// Populate current options.
-		$this->_getCurrentOptions();
+		$this->get_current_options();
 
 		// Load public-facing style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
@@ -115,7 +114,6 @@ class NS_Category_Widget {
 	 * @return object A single instance of this class.
 	 */
 	public static function get_instance() {
-
 		// If the single instance hasn't been set, set it now.
 		if ( null === self::$instance ) {
 			self::$instance = new self();
@@ -196,7 +194,6 @@ class NS_Category_Widget {
 	 * @param int $blog_id ID of the new blog.
 	 */
 	public function activate_new_site( $blog_id ) {
-
 		if ( 1 !== did_action( 'wpmu_new_blog' ) ) {
 			return;
 		}
@@ -227,7 +224,6 @@ class NS_Category_Widget {
 	 * @since 1.0.0
 	 */
 	private static function single_activate() {
-
 		update_option( self::$plugin_option_name, self::$default_options );
 	}
 
@@ -246,7 +242,6 @@ class NS_Category_Widget {
 	 * @since 1.0.0
 	 */
 	public function load_plugin_textdomain() {
-
 		load_plugin_textdomain( $this->plugin_slug );
 	}
 
@@ -256,7 +251,6 @@ class NS_Category_Widget {
 	 * @since 1.0.0
 	 */
 	public function enqueue_styles() {
-
 		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_tree_style'] ) ) {
 			wp_enqueue_style( $this->plugin_slug . '-tree-style', plugins_url( 'assets/css/themes/default/style.css', __FILE__ ), array(), self::VERSION );
 		}
@@ -275,7 +269,6 @@ class NS_Category_Widget {
 		}
 	}
 
-
 	/**
 	 * Return current options.
 	 *
@@ -292,6 +285,8 @@ class NS_Category_Widget {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @param string $key Key.
+	 *
 	 * @return array Current options.
 	 */
 	public function get_option( $key ) {
@@ -307,8 +302,7 @@ class NS_Category_Widget {
 	 *
 	 * @since 1.0.0
 	 */
-	private function _getCurrentOptions() {
-
+	private function get_current_options() {
 		$options       = array_merge( self::$default_options, (array) get_option( self::$plugin_option_name, array() ) );
 		$this->options = $options;
 	}
@@ -318,8 +312,7 @@ class NS_Category_Widget {
 	 *
 	 * @since 1.0.0
 	 */
-	private function _setDefaultOptions() {
-
+	private function set_default_options() {
 		if ( ! get_option( self::$plugin_option_name ) ) {
 			update_option( self::$plugin_option_name, self::$default_options );
 		}
