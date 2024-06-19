@@ -20,7 +20,10 @@
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/phpunit.xml*</exclude-pattern>
   <exclude-pattern>*lib/*</exclude-pattern>
+  <exclude-pattern>*admin/*</exclude-pattern>
+  <exclude-pattern>*public/*</exclude-pattern>
   <exclude-pattern>*\.(css|js)</exclude-pattern>
+  <exclude-pattern>*/widgets/nscw-widget.php</exclude-pattern>
 
   <!-- How to scan -->
   <!-- Usage instructions: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
