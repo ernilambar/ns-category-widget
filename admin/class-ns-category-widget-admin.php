@@ -50,12 +50,13 @@ class NS_Category_Widget_Admin {
 	private function __construct() {
 
 		$plugin = NS_Category_Widget::get_instance();
+
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
 		$this->options = $plugin->get_options_array();
 
 		// Add an action link pointing to the options page.
-		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->plugin_slug . '.php' );
+		$plugin_basename = plugin_basename( plugin_dir_path( realpath( __DIR__ ) ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
 		// Add admin notice.
@@ -117,10 +118,10 @@ class NS_Category_Widget_Admin {
 		$obj->add_field(
 			'nscw_settings_tab',
 			array(
-				'id'        => 'nscw_field_enable_ns_category_widget',
-				'type'      => 'toggle',
-				'title'     => esc_html__( 'Enable NS Category Widget', 'ns-category-widget' ),
-				'default'   => true,
+				'id'      => 'nscw_field_enable_ns_category_widget',
+				'type'    => 'toggle',
+				'title'   => esc_html__( 'Enable NS Category Widget', 'ns-category-widget' ),
+				'default' => true,
 			)
 		);
 
@@ -128,10 +129,10 @@ class NS_Category_Widget_Admin {
 		$obj->add_field(
 			'nscw_settings_tab',
 			array(
-				'id'        => 'nscw_field_enable_tree_script',
-				'type'      => 'toggle',
-				'title'     => esc_html__( 'Enable Tree Script', 'ns-category-widget' ),
-				'default'   => true,
+				'id'      => 'nscw_field_enable_tree_script',
+				'type'    => 'toggle',
+				'title'   => esc_html__( 'Enable Tree Script', 'ns-category-widget' ),
+				'default' => true,
 			)
 		);
 
@@ -139,10 +140,10 @@ class NS_Category_Widget_Admin {
 		$obj->add_field(
 			'nscw_settings_tab',
 			array(
-				'id'        => 'nscw_field_enable_tree_style',
-				'type'      => 'toggle',
-				'title'     => esc_html__( 'Enable Tree Style', 'ns-category-widget' ),
-				'default'   => true,
+				'id'      => 'nscw_field_enable_tree_style',
+				'type'    => 'toggle',
+				'title'   => esc_html__( 'Enable Tree Style', 'ns-category-widget' ),
+				'default' => true,
 			)
 		);
 
@@ -167,7 +168,7 @@ class NS_Category_Widget_Admin {
 	public static function get_instance() {
 
 		if ( null == self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -180,12 +181,11 @@ class NS_Category_Widget_Admin {
 	 */
 	function nscw_scripts_enqueue( $hook ) {
 		if ( 'widgets.php' !== $hook ) {
-		    return;
+			return;
 		}
-		wp_register_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js', array( 'jquery'), NS_CATEGORY_WIDGET_VERSION );
+		wp_register_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/admin/assets/js/nscw-widget.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION );
 		wp_localize_script( 'nscw-widget-script', 'ns_category_widget_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 		wp_enqueue_script( 'nscw-widget-script' );
-
 	}
 
 	/**
@@ -201,7 +201,6 @@ class NS_Category_Widget_Admin {
 			),
 			$links
 		);
-
 	}
 
 	/**
@@ -226,8 +225,8 @@ class NS_Category_Widget_Admin {
 			'name'            => $name,
 			'id'              => $id,
 			'class'           => 'nscw-cat-list',
-			'show_option_all' => __( 'Show All','ns-category-widget' ),
-	    );
+			'show_option_all' => __( 'Show All', 'ns-category-widget' ),
+		);
 
 		$output['html'] = wp_dropdown_categories( apply_filters( 'widget_categories_dropdown_args', $cat_args ) );
 
@@ -335,13 +334,10 @@ class NS_Category_Widget_Admin {
 
 	public function get_recommended_plugins_content() {
 		return '<ol>
-			<li><a href="https://wpconcern.com/plugins/woocommerce-product-tabs/" target="_blank">WooCommerce Product Tabs</a></li>
-			<li><a href="https://wpconcern.com/plugins/nifty-coming-soon-and-under-construction-page/" target="_blank">Coming Soon & Maintenance Mode Page</a></li>
-			<li><a href="https://wpconcern.com/plugins/post-grid-elementor-addon/" target="_blank">Post Grid Elementor Addon</a></li>
-			<li><a href="https://wpconcern.com/plugins/advanced-google-recaptcha/" target="_blank">Advanced Google reCAPTCHA</a></li>
-			<li><a href="https://wpconcern.com/plugins/majestic-before-after-image/" target="_blank">Majestic Before After Image</a></li>
-			<li><a href="https://wpconcern.com/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
-			<li><a href="https://wordpress.org/plugins/prime-addons-for-elementor/" target="_blank">Prime Addons for Elementor</a></li>
+			<li><a href="https://wordpress.org/plugins/ns-featured-posts/" target="_blank">NS Featured Posts</a></li>
+			<li><a href="https://wordpress.org/plugins/ns-category-widget/" target="_blank">NS Category Widget</a></li>
+			<li><a href="https://wordpress.org/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
+			<li><a href="https://wordpress.org/plugins/date-today-nepali/" target="_blank">Date Today Nepali</a></li>
 		</ol>';
 	}
 }

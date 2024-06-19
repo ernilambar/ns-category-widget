@@ -3,7 +3,7 @@
 Contributors: rabmalin
 Donate link: https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html
 Tags: category, listing, widget, list, post, posts, sidebar, taxonomy, custom taxonomy, parent category, ClassicPress
-Requires at least: 5.0
+Requires at least: 5.1
 Requires PHP: 5.6
 Tested up to: 6.6
 Stable tag: 3.2.0
