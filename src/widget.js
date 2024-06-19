@@ -1,10 +1,4 @@
-const toggleElement = ( el ) => {
-	if ( el.style.display == 'none' ) {
-		el.style.display = '';
-	} else {
-		el.style.display = 'none';
-	}
-};
+import { toggleElement } from './utils.js';
 
 document.addEventListener( 'DOMContentLoaded', function () {
 	document.addEventListener( 'click', ( event ) => {
@@ -21,32 +15,31 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			toggleElement( targetContainer );
 		}
 	} );
-} );
 
-jQuery( document ).ready( function ( $ ) {
-	jQuery( 'body' ).on( 'change', '.nscw-taxonomy', function () {
-		var tthis = $( this );
+	document.addEventListener( 'change', ( event ) => {
+		if ( event.target.classList.contains( 'nscw-taxonomy' ) ) {
+			event.preventDefault();
 
-		var our_data = new Object();
-		our_data.action = 'populate_categories';
-		our_data.taxonomy = $( this ).val();
-		our_data.name = $( this ).data( 'name' );
-		our_data.id = $( this ).data( 'id' );
+			const formData = new FormData();
 
-		jQuery.ajax( {
-			url: ns_category_widget_ajax_object.ajaxurl,
-			type: 'POST',
-			data: our_data,
-			success: function ( result ) {
-				if ( 1 == result.status ) {
-					our_html = result.html;
-					var target = $( tthis )
-						.parent()
-						.parent()
-						.find( '.nscw-cat-list' );
-					$( target ).html( our_html );
-				}
-			},
-		} );
+			formData.append( 'action', 'populate_categories' );
+			formData.append( 'taxonomy', event.target.value );
+			formData.append( 'name', event.target.getAttribute( 'data-name' ) );
+			formData.append( 'id', event.target.getAttribute( 'data-id' ) );
+
+			fetch( ns_category_widget_ajax_object.ajaxurl, {
+				method: 'POST',
+				body: formData,
+			} )
+				.then( ( res ) => res.json() )
+				.then( ( rawData ) => {
+					const targetDropdown =
+						event.target.parentNode.parentNode.querySelector(
+							'.nscw-cat-list'
+						);
+					targetDropdown.innerHTML = rawData.data.html;
+				} )
+				.catch( ( err ) => console.log( err ) );
+		}
 	} );
 } );

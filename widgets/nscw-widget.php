@@ -50,9 +50,9 @@ class NSCW_Widget extends WP_Widget {
 		$include_category = ! empty( $instance['include_category'] ) ? $instance['include_category'] : '';
 		$exclude_category = ! empty( $instance['exclude_category'] ) ? $instance['exclude_category'] : '';
 		$enable_tree      = ! empty( $instance['enable_tree'] ) ? $instance['enable_tree'] : 0;
-		$tree_show_icons  = ! empty( $instance['tree_show_icons'] ) ? $instance['tree_show_icons'] : 0;
-		$tree_show_dots   = ! empty( $instance['tree_show_dots'] ) ? $instance['tree_show_dots'] : 1;
-		$tree_save_state  = ! empty( $instance['tree_save_state'] ) ? $instance['tree_save_state'] : 1;
+		$tree_show_icons  = array_key_exists( 'tree_show_icons', $instance ) ? $instance['tree_show_icons'] : 0;
+		$tree_show_dots   = array_key_exists( 'tree_show_dots', $instance ) ? $instance['tree_show_dots'] : 1;
+		$tree_save_state  = array_key_exists( 'tree_save_state', $instance ) ? $instance['tree_save_state'] : 1;
 
 		if ( ! empty( $exclude_category ) ) {
 			$include_category = '';

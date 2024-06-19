@@ -190,7 +190,7 @@ class NS_Category_Widget_Admin {
 			return;
 		}
 
-		wp_enqueue_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/build/widget.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION, true );
+		wp_enqueue_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/build/widget.js', array(), NS_CATEGORY_WIDGET_VERSION, true );
 		wp_localize_script( 'nscw-widget-script', 'ns_category_widget_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
 
@@ -219,8 +219,6 @@ class NS_Category_Widget_Admin {
 	public function ajax_populate_categories() {
 		$output = array();
 
-		$output['status'] = 0;
-
 		$taxonomy = ( isset( $_POST['taxonomy'] ) && ! empty( $_POST['taxonomy'] ) ) ? sanitize_text_field( wp_unslash( $_POST['taxonomy'] ) ) : '';
 		$name     = ( isset( $_POST['name'] ) && ! empty( $_POST['name'] ) ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
 		$id       = ( isset( $_POST['id'] ) && ! empty( $_POST['id'] ) ) ? sanitize_text_field( wp_unslash( $_POST['id'] ) ) : '';
@@ -228,7 +226,7 @@ class NS_Category_Widget_Admin {
 		$cat_args = array(
 			'orderby'         => 'slug',
 			'taxonomy'        => $taxonomy,
-			'echo'            => '0',
+			'echo'            => 0,
 			'hide_empty'      => 0,
 			'name'            => $name,
 			'id'              => $id,
@@ -238,9 +236,7 @@ class NS_Category_Widget_Admin {
 
 		$output['html'] = wp_dropdown_categories( apply_filters( 'widget_categories_dropdown_args', $cat_args ) );
 
-		$output['status'] = 1;
-
-		wp_send_json( $output );
+		wp_send_json_success( $output, 200 );
 	}
 
 	/**
