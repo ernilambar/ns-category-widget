@@ -181,7 +181,7 @@ class SettingsPage {
 			return;
 		}
 
-		wp_enqueue_script( 'ns-category-widget-settings', NS_CATEGORY_WIDGET_URL . '/build/blog-posts.js', array( 'jquery' ), NS_CATEGORY_WIDGET_VERSION, true );
+		wp_enqueue_script( 'ns-category-widget-settings', NS_CATEGORY_WIDGET_URL . '/build/blog-posts.js', array(), NS_CATEGORY_WIDGET_VERSION, true );
 	}
 
 	/**

@@ -27,7 +27,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			formData.append( 'name', event.target.getAttribute( 'data-name' ) );
 			formData.append( 'id', event.target.getAttribute( 'data-id' ) );
 
-			fetch( ns_category_widget_ajax_object.ajaxurl, {
+			fetch( ajaxurl, {
 				method: 'POST',
 				body: formData,
 			} )

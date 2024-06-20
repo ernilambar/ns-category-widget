@@ -68,6 +68,5 @@ class Widget {
 		}
 
 		wp_enqueue_script( 'nscw-widget-script', NS_CATEGORY_WIDGET_URL . '/build/widget.js', array(), NS_CATEGORY_WIDGET_VERSION, true );
-		wp_localize_script( 'nscw-widget-script', 'ns_category_widget_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
 }
