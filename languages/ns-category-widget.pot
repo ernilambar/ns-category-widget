@@ -18,7 +18,7 @@ msgstr ""
 #: ns-category-widget.php
 #: admin/class-ns-category-widget-admin.php:89
 #: admin/class-ns-category-widget-admin.php:92
-#: admin/class-ns-category-widget-admin.php:363
+#: admin/class-ns-category-widget-admin.php:359
 #: widgets/nscw-widget.php:26
 msgid "NS Category Widget"
 msgstr ""
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Enable Tree Style"
 msgstr ""
 
-#: admin/class-ns-category-widget-admin.php:236
+#: admin/class-ns-category-widget-admin.php:234
 #: widgets/nscw-widget.php:254
 #: widgets/nscw-widget.php:264
 msgid "Show All"

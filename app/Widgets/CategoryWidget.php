@@ -5,12 +5,18 @@
  * @package NS_Category_Widget
  */
 
+namespace NSCW\Widgets;
+
+use NSCW\Core\Option;
+use NSCW\Extension\CategoryWalker;
+use WP_Widget;
+
 /**
  * Category widget class.
  *
  * @since 1.0.0
  */
-class NSCW_Widget extends WP_Widget {
+class CategoryWidget extends WP_Widget {
 
 	/**
 	 * Constructor.
@@ -75,7 +81,7 @@ class NSCW_Widget extends WP_Widget {
 			'include'    => wp_parse_id_list( $include_category ),
 			'exclude'    => wp_parse_id_list( $exclude_category ),
 			'taxonomy'   => $taxonomy,
-			'walker'     => new NSCW_Walker_Category(),
+			'walker'     => new CategoryWalker(),
 		);
 
 		if ( $parent_category ) {
@@ -94,11 +100,7 @@ class NSCW_Widget extends WP_Widget {
 		echo '</ul>';
 		echo '</div>';
 
-		$obj_nscw = NS_Category_Widget::get_instance();
-
-		$nscw_field_enable_tree_script = $obj_nscw->get_option( 'nscw_field_enable_tree_script' );
-
-		if ( 1 === $enable_tree && true === $nscw_field_enable_tree_script ) {
+		if ( 1 === $enable_tree && true === Option::get( 'nscw_field_enable_tree_script' ) ) {
 			$tree_plugins = array();
 			if ( 1 === $tree_save_state ) {
 				$tree_plugins[] = 'state';
