@@ -17,6 +17,11 @@
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
+	"autoload": {
+		"psr-4": {
+			"NSCW\\": "app/"
+		}
+	},
 	"config": {
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,

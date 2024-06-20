@@ -5,12 +5,16 @@
  * @package NS_Category_Widget
  */
 
+namespace NSCW\Extension;
+
+use Walker_Category;
+
 /**
  * Category walker class.
  *
  * @since 1.0.0
  */
-class NSCW_Walker_Category extends Walker_Category {
+class CategoryWalker extends Walker_Category {
 
 	/**
 	 * Starts the element output.
