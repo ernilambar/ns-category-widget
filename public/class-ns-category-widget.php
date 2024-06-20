@@ -252,7 +252,7 @@ class NS_Category_Widget {
 	 */
 	public function enqueue_styles() {
 		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_tree_style'] ) ) {
-			wp_enqueue_style( $this->plugin_slug . '-tree-style', plugins_url( 'assets/css/themes/default/style.css', __FILE__ ), array(), self::VERSION );
+			wp_enqueue_style( $this->plugin_slug . '-tree-style', NS_CATEGORY_WIDGET_URL . '/third-party/jstree/css/themes/default/style.css', array(), '3.3.11' );
 		}
 	}
 
@@ -263,9 +263,8 @@ class NS_Category_Widget {
 	 */
 	public function enqueue_scripts() {
 		if ( true === rest_sanitize_boolean( $this->options['nscw_field_enable_tree_script'] ) ) {
-			wp_enqueue_script( 'tree-script', plugins_url( 'assets/js/jstree.min.js', __FILE__ ), array( 'jquery' ), '3.3.11', true );
-			wp_enqueue_script( 'tree-script-state', plugins_url( 'assets/js/jstree.state.js', __FILE__ ), array( 'jquery' ), '3.3.11', true );
-			wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), array( 'jquery' ), self::VERSION, true );
+			wp_enqueue_script( 'tree-script', NS_CATEGORY_WIDGET_URL . '/third-party/jstree/js/jstree.min.js', array( 'jquery' ), '3.3.11', true );
+			wp_enqueue_script( 'tree-script-state', NS_CATEGORY_WIDGET_URL . '/third-party/jstree/js/jstree.state.js', array( 'jquery', 'tree-script' ), '3.3.11', true );
 		}
 	}
 
