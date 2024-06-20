@@ -48,6 +48,11 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 
 == Changelog ==
 
+= 4.0.0 - 22 Jun 2024 =
+* Requirement: PHP 7.2; WP 6.0
+* Complete revamp of the plugin
+* Update dependencies
+
 = 3.2.0 - 19 Jun 2024 =
 * Update packages
 
@@ -119,3 +124,8 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 
 = 1.0 =
 * Initial release
+
+== Upgrade Notice ==
+
+= 4.0.0 =
+Breaking: Complete revamp. Bumped minimum requirement of WP and PHP
