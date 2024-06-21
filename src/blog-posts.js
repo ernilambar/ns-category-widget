@@ -26,6 +26,10 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 		const settings = { ...defaultArgs, ...args };
 
+		if ( ! settings.api ) {
+			return;
+		}
+
 		const targetSelector = document.querySelector( settings.selector );
 
 		if ( ! targetSelector ) {
@@ -38,7 +42,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 		targetSelector.innerHTML = settings.loading_text;
 
-		fetch( ajaxurl, {
+		fetch( settings.api, {
 			method: 'POST',
 			body: formData,
 		} )
