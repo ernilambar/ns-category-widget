@@ -1104,3 +1104,9 @@
     margin-right: 0;
   }
 }
+
+.widget_ns_category_widget .jstree-default .jstree-clicked {
+	background: inherit;
+	box-shadow: none;
+}
+
