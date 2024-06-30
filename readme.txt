@@ -6,7 +6,7 @@ Tags: category, listing, widget, sidebar, taxonomy
 Requires at least: 6.0
 Requires PHP: 7.2
 Tested up to: 6.6
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,7 +48,10 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 
 == Changelog ==
 
-= 4.0.0 - 22 Jun 2024 =
+= 4.0.1 - 30 Jun 2024 =
+* Fix tree style
+
+= 4.0.0 - 28 Jun 2024 =
 * Requirement: PHP 7.2; WP 6.0
 * Complete revamp of the plugin
 * Update dependencies
