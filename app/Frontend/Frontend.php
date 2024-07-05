@@ -5,7 +5,7 @@
  * @package NS_Category_Widget
  */
 
-namespace NSCW\Public;
+namespace NSCW\Frontend;
 
 use NSCW\Core\Option;
 
