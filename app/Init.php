@@ -25,7 +25,7 @@ final class Init {
 			Admin\Admin::class,
 			Admin\SettingsPage::class,
 			Admin\Widget::class,
-			Public\Frontend::class,
+			Frontend\Frontend::class,
 		);
 
 		return $classes;

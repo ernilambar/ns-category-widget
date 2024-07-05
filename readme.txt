@@ -6,7 +6,7 @@ Tags: category, listing, widget, sidebar, taxonomy
 Requires at least: 6.0
 Requires PHP: 7.2
 Tested up to: 6.6
-Stable tag: 4.0.1
+Stable tag: 4.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 1. Adding widget in sidebar
 
 == Changelog ==
+
+= 4.1.0 - 5 Jul 2024 =
+* Fix PHP error
 
 = 4.0.1 - 30 Jun 2024 =
 * Fix tree style
