@@ -2,15 +2,12 @@ import { toggleElement } from './utils.js';
 
 document.addEventListener( 'DOMContentLoaded', function () {
 	document.addEventListener( 'click', ( event ) => {
-		if (
-			event.target.classList.contains( 'btn-show-advanced-tree-settings' )
-		) {
+		if ( event.target.classList.contains( 'btn-show-advanced-tree-settings' ) ) {
 			event.preventDefault();
 
-			const targetContainer =
-				event.target.parentNode.parentNode.querySelector(
-					'.advanced-tree-settings-wrap'
-				);
+			const targetContainer = event.target.parentNode.parentNode.querySelector(
+				'.advanced-tree-settings-wrap'
+			);
 
 			toggleElement( targetContainer );
 		}
@@ -34,9 +31,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				.then( ( res ) => res.json() )
 				.then( ( rawData ) => {
 					const targetDropdown =
-						event.target.parentNode.parentNode.querySelector(
-							'.nscw-cat-list'
-						);
+						event.target.parentNode.parentNode.querySelector( '.nscw-cat-list' );
 					targetDropdown.innerHTML = rawData.data.html;
 				} )
 				.catch( ( err ) => console.log( err ) );
