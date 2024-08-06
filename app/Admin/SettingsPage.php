@@ -7,8 +7,8 @@
 
 namespace NSCW\Admin;
 
-use NSCW\Core\Option;
 use Nilambar\Optioner\Optioner;
+use NSCW\Core\Option;
 
 /**
  * Settings page class.
@@ -121,10 +121,10 @@ class SettingsPage {
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param Optioner $optioner_object Instance of Optioner.
+	 * @param Optioner $obj Instance of Optioner.
 	 */
-	public function render_sidebar( $optioner_object ) {
-		$optioner_object->render_sidebar_box(
+	public function render_sidebar( $obj ) {
+		$obj->render_sidebar_box(
 			array(
 				'title'   => 'Help &amp; Support',
 				'icon'    => 'dashicons-editor-help',
@@ -133,40 +133,29 @@ class SettingsPage {
 				<h4>Wanna help make this plugin better?</h4>
 				<p><a href="https://wordpress.org/support/plugin/ns-category-widget/reviews/#new-post" target="_blank">Review and rate this plugin on WordPress.org</a></p>',
 			),
-			$optioner_object
+			$obj
 		);
 
-		$optioner_object->render_sidebar_box(
+		$obj->render_sidebar_box(
 			array(
 				'title'   => 'Recommended Plugins',
-				'content' => $this->get_recommended_plugins_content(),
+				'content' => '<ul>
+												<li><a href="https://wordpress.org/plugins/ns-featured-posts/" target="_blank">NS Featured Posts</a></li>
+												<li><a href="https://wordpress.org/plugins/ns-category-widget/" target="_blank">NS Category Widget</a></li>
+												<li><a href="https://wordpress.org/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
+												<li><a href="https://wordpress.org/plugins/date-today-nepali/" target="_blank">Date Today Nepali</a></li>
+											</ul>',
 			),
-			$optioner_object
+			$obj
 		);
 
-		$optioner_object->render_sidebar_box(
+		$obj->render_sidebar_box(
 			array(
 				'title'   => 'Recent Blog Posts',
 				'content' => '<div class="ns-blog-list"></div>',
 			),
-			$optioner_object
+			$obj
 		);
-	}
-
-	/**
-	 * Returns recommended plugins markup.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return string Markup.
-	 */
-	public function get_recommended_plugins_content() {
-		return '<ul>
-			<li><a href="https://wordpress.org/plugins/ns-featured-posts/" target="_blank">NS Featured Posts</a></li>
-			<li><a href="https://wordpress.org/plugins/ns-category-widget/" target="_blank">NS Category Widget</a></li>
-			<li><a href="https://wordpress.org/plugins/admin-customizer/" target="_blank">Admin Customizer</a></li>
-			<li><a href="https://wordpress.org/plugins/date-today-nepali/" target="_blank">Date Today Nepali</a></li>
-		</ul>';
 	}
 
 	/**
