@@ -18,7 +18,6 @@
 	"require-dev": {
 		"php-parallel-lint/php-parallel-lint": "^1.4",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"roave/security-advisories": "dev-latest",
 		"slevomat/coding-standard": "^8.15",
 		"wp-cli/i18n-command": "^2.6",
 		"wp-coding-standards/wpcs": "^3.1"
@@ -32,7 +31,6 @@
 	},
 	"config": {
 		"allow-plugins": {
-			"cweagans/composer-patches": true,
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"ergebnis/composer-normalize": true
 		},
@@ -41,12 +39,12 @@
 		"sort-packages": true
 	},
 	"scripts": {
+		"format": "@php ./vendor/bin/phpcbf --report-full --report-summary",
 		"lint": [
 			"@lint-php",
 			"@phpcs"
 		],
 		"lint-php": "@php ./vendor/bin/parallel-lint --colors --exclude .git --exclude vendor --exclude node_modules --exclude deploy .",
-		"phpcbf": "@php ./vendor/bin/phpcbf --report-full --report-summary",
 		"phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary",
 		"pot": "./vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
 	}

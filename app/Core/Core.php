@@ -7,7 +7,6 @@
 
 namespace NSCW\Core;
 
-use NSCW\Core\Option;
 use NSCW\Widgets\CategoryWidget;
 
 /**

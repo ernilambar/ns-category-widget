@@ -16,6 +16,8 @@
  * @package NS_Category_Widget
  */
 
+use NSCW\Init;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -35,5 +37,5 @@ if ( file_exists( NS_CATEGORY_WIDGET_DIR . '/vendor/autoload.php' ) ) {
 }
 
 if ( class_exists( 'NSCW\Init' ) ) {
-	\NSCW\Init::register_services();
+	Init::register_services();
 }

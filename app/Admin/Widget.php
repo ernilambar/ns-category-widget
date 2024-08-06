@@ -7,8 +7,6 @@
 
 namespace NSCW\Admin;
 
-use NSCW\Widgets\CategoryWidget;
-
 /**
  * Widget class.
  *
