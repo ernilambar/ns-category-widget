@@ -7,6 +7,10 @@ on:
       - main
       - master
 
+concurrency:
+  group: ${{ github.repository }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   php-lint:
     name: PHP Lint

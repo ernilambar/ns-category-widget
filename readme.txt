@@ -3,10 +3,10 @@
 Contributors: rabmalin
 Donate link: https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html
 Tags: category, listing, widget, sidebar, taxonomy
-Tested up to: 6.6
-Stable tag: 4.1.3
+Tested up to: 6.7
+Stable tag: 4.1.4
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 
 A plugin to add widget for listing Categories and Taxonomies. Extending Default WordPress Category Widget.
 
@@ -45,6 +45,9 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 1. Adding widget in sidebar
 
 == Changelog ==
+
+= 4.1.4 - 12 Jan 2025 =
+* Update packages
 
 = 4.1.3 - 30 Jul 2024 =
 * Update dependencies

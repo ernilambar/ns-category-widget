@@ -1,6 +1,6 @@
 {
 	"name": "ns-category-widget",
-	"version": "4.1.3",
+	"version": "4.1.4",
 	"description": "NS Category Widget",
 	"author": "Nilambar Sharma",
 	"license": "GPL-2.0-or-later",
@@ -21,9 +21,12 @@
 		"files": [
 			"**/*",
 			"!*.js",
-			"!*.json",
+			"!easy-replace-in-files.json",
+			"!package.json",
 			"!*.lock",
+			"!*.md",
 			"!*.yaml",
+			"!languages/**/*",
 			"!src/**/*"
 		]
 	},
@@ -58,7 +61,6 @@
 		"build": "webpack --mode=production --no-devtool",
 		"format": "prettier \"**/*.{cjs,css,js,json,mjs}\" --write",
 		"version": "easy-replace-in-files",
-		"pot": "composer run-script pot",
 		"lint-pkg-json": "npmPkgJsonLint .",
 		"prewpdeploy": "pnpm run deploy",
 		"wpdeploy": "wp-deployer",

@@ -212,15 +212,15 @@ class CategoryWidget extends WP_Widget {
 			)
 		);
 
-		$title            = htmlspecialchars( $instance['title'] );
-		$taxonomy         = htmlspecialchars( $instance['taxonomy'] );
+		$title            = htmlspecialchars( $instance['title'], ENT_COMPAT );
+		$taxonomy         = htmlspecialchars( $instance['taxonomy'], ENT_COMPAT );
 		$parent_category  = isset( $instance['parent_category'] ) ? esc_attr( $instance['parent_category'] ) : '';
 		$depth            = isset( $instance['depth'] ) ? esc_attr( $instance['depth'] ) : '';
 		$orderby          = isset( $instance['orderby'] ) ? esc_attr( $instance['orderby'] ) : '';
 		$order            = isset( $instance['order'] ) ? esc_attr( $instance['order'] ) : '';
-		$number           = htmlspecialchars( $instance['number'] );
-		$include_category = htmlspecialchars( $instance['include_category'] );
-		$exclude_category = htmlspecialchars( $instance['exclude_category'] );
+		$number           = htmlspecialchars( $instance['number'], ENT_COMPAT );
+		$include_category = htmlspecialchars( $instance['include_category'], ENT_COMPAT );
+		$exclude_category = htmlspecialchars( $instance['exclude_category'], ENT_COMPAT );
 		?>
 
 		<p>

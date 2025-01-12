@@ -11,15 +11,14 @@
 		}
 	],
 	"require": {
-		"php": ">=7.2",
+		"php": ">=7.2.24",
 		"ernilambar/optioner": "^3.0",
 		"ernilambar/wp-admin-notice": "^2.0"
 	},
 	"require-dev": {
 		"php-parallel-lint/php-parallel-lint": "^1.4",
-		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpcompatibility/php-compatibility": "dev-develop#02835e45d27f5d0ed1642d5c8a5e8bfd2c7d7796",
 		"slevomat/coding-standard": "^8.15",
-		"wp-cli/i18n-command": "^2.6",
 		"wp-coding-standards/wpcs": "^3.1"
 	},
 	"minimum-stability": "dev",
@@ -35,7 +34,9 @@
 			"ergebnis/composer-normalize": true
 		},
 		"optimize-autoloader": true,
-		"process-timeout": 7200,
+		"platform": {
+			"php": "7.2.24"
+		},
 		"sort-packages": true
 	},
 	"scripts": {
@@ -45,7 +46,6 @@
 			"@phpcs"
 		],
 		"lint-php": "@php ./vendor/bin/parallel-lint --colors --exclude .git --exclude vendor --exclude node_modules --exclude deploy .",
-		"phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary",
-		"pot": "./vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
+		"phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary"
 	}
 }
