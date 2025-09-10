@@ -21,17 +21,7 @@ class Core {
 	 * @since 4.0.0
 	 */
 	public function register() {
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-	}
-
-	/**
-	 * Load plugin textdomain.
-	 *
-	 * @since 4.0.0
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( 'ns-category-widget' );
 	}
 
 	/**
