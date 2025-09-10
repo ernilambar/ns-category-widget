@@ -1,6 +1,6 @@
 {
 	"name": "ns-category-widget",
-	"version": "4.1.4",
+	"version": "4.1.5",
 	"description": "NS Category Widget",
 	"author": "Nilambar Sharma",
 	"license": "GPL-2.0-or-later",
@@ -52,7 +52,7 @@
 	},
 	"wpDeployer": {
 		"repoType": "plugin",
-		"username": "rabmalin",
+		"username": "nilambar",
 		"buildDir": "deploy/ns-category-widget",
 		"deployAssets": false
 	},
