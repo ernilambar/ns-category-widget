@@ -1,10 +1,10 @@
 === NS Category Widget ===
 
-Contributors: rabmalin
+Contributors: nilambar
 Donate link: https://www.nilambar.net/2013/12/ns-category-widget-wordpress-plugin.html
 Tags: category, listing, widget, sidebar, taxonomy
 Tested up to: 6.8
-Stable tag: 4.1.5
+Stable tag: 4.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 
@@ -45,6 +45,9 @@ Nice, make a post on the [Support Forum](https://wordpress.org/support/plugin/ns
 1. Adding widget in sidebar
 
 == Changelog ==
+
+= 4.1.6 - 12 Sep 2025 =
+* Fix contributors
 
 = 4.1.5 - 10 Sep 2025 =
 * Remove load_plugin_textdomain() call
